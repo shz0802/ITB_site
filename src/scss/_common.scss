@@ -1,0 +1,267 @@
+*{box-sizing: border-box;}
+
+*:before, *:after {
+    display: block;
+    box-sizing: inherit;
+}
+
+ul{
+    li{list-style: none;}
+}
+
+
+body{
+    width: 100vw;
+    position: relative;
+    background-color: $base-bg-color;
+    color: $base-black;
+    overflow-x: hidden;
+    &::-webkit-scrollbar{width: 12px;}
+    &::-webkit-scrollbar-track{
+        background-color: rgba($base-black,0.1);
+        &:hover{
+            background-color: rgba($base-black,0.2);
+        }
+    }
+    &::-webkit-scrollbar-thumb{
+        position: absolute;
+        background-color: rgba($base-black,0.4);
+    }
+    &.stopScroll{
+        &::-webkit-scrollbar{width: 0;}
+    }
+}
+
+#container{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100vw;
+    z-index: 0;
+    transition: .5s all ease-in-out;
+    &.is-open{
+        transform: translateX(-75vw);
+        @include mq(md){
+            transform: translateX(-60vw);
+        }
+    }
+    a{
+        &:link{
+            color: $base-color;
+            text-decoration: underline;
+        }
+        &:active,a:focus{
+            text-decoration: underline;
+        }
+        &:visited{
+            color: darken($base-color,20%);
+            text-decoration: underline;
+        }
+    }
+}
+
+#main{
+    position: relative;
+    margin-top: $sp-nav-height;
+    margin-bottom: 15vw;
+    width: 100%;
+    z-index: 0;
+    @include mq(lg){
+        margin-top: $lg-nav-height;
+    }
+    &.no-top{
+        margin-top: 25vw;
+        margin-bottom: 15vw;
+        @include mq(lg){
+            margin-top: 10vw;
+        }
+        .no-title{
+            margin-top: 30vw;
+            @include mq(lg){
+                margin-top: 12.5vw;
+            }
+        }
+    }
+}
+
+#footer{
+    width: 100%;
+    height: 15vw;
+    margin: 0;
+    @include mq(lg){
+        height: 5vw;
+    }
+    small{
+        display: block;
+        width: 100%;
+        text-align: center;
+        line-height: 15vw;
+        font-size: 3.5vw;
+        color: rgba($base-color,0.8);
+        @include mq(lg){
+            font-size: 1.3vw;
+            line-height: 5vw;
+        }
+    }
+}
+
+#enter-page{
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    z-index: 9999;
+    background-color: $base-color;
+    color: $base-white;
+    transition: 0s all ease-in-out;
+    transform: scaleX(1);
+    transform-origin: left;
+    &:after{
+        content: "";
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: .5s all ease-in-out;
+        background-color: lighten($base-black,10%);
+        transform-origin: right;
+        transform: scaleX(0);
+        opacity: 1;
+    }
+    &.is-over{
+        &:after{
+            transform: scaleX(1);
+        }
+    }
+    &.is-hidden{
+        transition: .5s all ease-in-out;
+        transform: scaleX(0);
+    }
+    &.is-fadedOut{
+        transition: .5s all ease-in-out;
+        opacity: 0;
+    }
+    #loading-icon{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        position: absolute;
+        top: calc(50vh - 15vw);
+        top: calc(var(--vh, 1vh) * 50 - 15vw);
+        width: 30vw;
+        left: 35vw;
+        z-index: 9999;
+        @include mq(lg){
+            width: 15vw;
+            left: 42.5vw;
+            top: calc(50vh - 5vw);
+        }
+        .dot{
+            top: 0;
+            width: 2vw;
+            height: 2vw;
+            background-color: $base-white;
+            transform: translateY(0);
+            @for $i from 1 through 5 {
+                &:nth-child(#{$i}) {
+                    animation: dotSwing 1.5s infinite ease-in-out;
+                    animation-delay: #{($i)* -0.1}s;
+                }
+            }
+            @include mq(lg){
+                width: 1vw;
+                height: 1vw;
+                @for $i from 1 through 5 {
+                    &:nth-child(#{$i}) {
+                        animation: dotSwingPC 1.5s infinite ease-in-out;
+                        animation-delay: #{($i)* -0.1}s;
+                    }
+                }
+                @keyframes dotSwingPC {
+                    0%{transform: translateY(0);}50%{transform: translateY(5vw);}100%{transform: translateY(0);}
+                }
+            }
+            @keyframes dotSwing {
+                0%{transform: translateY(0);}50%{transform: translateY(15vw);}100%{transform: translateY(0);}
+            }
+        }
+        transition: 0s all ease-in-out;
+        opacity: 1;
+        &.is-hidden{
+            transition: 1s all ease-in-out;
+            opacity: 0;
+        }
+    }
+    #enter-page__title{
+        position: absolute;
+        top: calc(var(--vh, 1vh) * 50 - 7.5vw);
+        left: 8vw;
+        width: 84vw;
+        font-size: 5vw;
+        letter-spacing: .2em;
+        font-family: "M PLUS 1p";
+        transform: scaleY(0.9);
+        white-space: nowrap;
+        @include mq(lg){
+            width: 42vw;
+            top: calc(50vh - 3vw);
+            left: 29vw;
+            font-size: 2.5vw;
+        }
+    }
+    #enter-button{
+        will-change: transform;
+        position: absolute;
+        width: 50vw;
+        height: 15vw;
+        top: calc(var(--vh, 1vh) * 80);
+        left: 25vw;
+        cursor: pointer;
+        @include mq(lg){
+            width: 30vw;
+            top: 75vh;
+            left: 35vw;
+            height: 6vw;
+        }
+        &:before{
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $base-white;
+            z-index: 100;
+            transition: 0s transform ease-in-out;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+        #enter-button__text{
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            color: $base-color;
+            font-size: 4.5vw;
+            width: 100%;
+            line-height: 15vw;
+            text-align: center;
+            letter-spacing: .1em;
+            text-indent: .1em;
+            z-index: 200;
+            @include mq(lg){
+                font-size: 1.8vw;
+                line-height: 6vw;
+            }
+        }
+        &.is-called{
+            &:before{
+                transition: .4s all ease-in-out;
+                transform: scaleX(1);
+            }
+        }
+    }
+}

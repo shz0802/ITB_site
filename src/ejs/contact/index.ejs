@@ -1,0 +1,84 @@
+<%- include("../component/_header.ejs",{
+    id: "contact",
+    depth: 1,
+    title: "お問い合わせ | 第一高等学校・東京大学弁論部",
+    ogtTitle: "お問い合わせ | 第一高等学校・東京大学弁論部",
+    ogURL: "https://utbenron.com/contact/",
+    description: "弊部へのお問い合わせに関する情報を掲載しています。お問い合わせフォームもご活用ください。",
+    ogDescription: "弊部へのお問い合わせに関する情報を掲載しています。お問い合わせフォームもご活用ください。",
+    ogImgURL: "https://utbenron.com/assets/image/logo/logo-small.png",
+    twitterCardType: "summary"
+}); -%>
+    <main id="main" class="no-top">
+        <div class="main-lev1">
+            <h3 class="main-lev1__header">お問い合わせ先</h3>
+            <div class="main-lev1__content">
+                <ul class="main-contact__list">
+                    <li class="main-contact__list-item"><img src="../assets/image/icon/email.png" alt="E-mail"><p>ichiko.todai.benronbu@gmail.com</p></li>
+                    <li class="main-contact__list-item"><img src="../assets/image/icon/twitter.png" alt="Twitter"><p><a href="https://twitter.com/Todai_Benronbu">公式Twitter(@Todai_Benronbu)</a></p></li>
+                    <li class="main-contact__list-item"><img src="../assets/image/icon/line.png" alt="LINE"><p><a href="https://lin.ee/3Z32rUC">2020年度公式LINEアカウント</a></p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-lev1">
+            <h3 class="main-lev1__header">お問い合わせフォーム</h3>
+            <div class="main-lev1__content contact-form-wrapper">
+                <form id="contact-form-input" class="contact-form">
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">お名前</label>
+                        <input type="text" class="input" name="name" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">メールアドレス</label>
+                        <input id="mail" type="text" class="input" placeholder="xxx@yyy.com" name="mail" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                        <div class="error-message error-invalid-mail">メールアドレスの形式が正しくありません</div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">メールアドレス(確認)</label>
+                        <input type="text" class="input" name="mail-confirm" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                        <div class="error-message error-invalid-confirmation">メールアドレスが一致していません</div>
+                    </div>
+                    <!--
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">ご用件</label>
+                        <div class="contact-form-group__radio-group">
+                            <input type="radio" id="radio01" name="question"><label class="contact-form-group__radio-label" for="radio01">質問</label>
+                            <input type="radio" id="radio02" name="question"><label class="contact-form-group__radio-label" for="radio02">入部希望</label>
+                            <input type="radio" id="radio03" name="question"><label class="contact-form-group__radio-label" for="radio03">見学希望</label>
+                            <input type="radio" id="radio04" class="others" name="question"><label class="contact-form-group__radio-label" for="radio04">その他</label>
+                            <input type="text" name="others" placeholder="ご用件をお書きください" class="contact-form-group__input-others">
+                        </div>
+                    </div>
+                    -->
+                    <div class="contact-form-group" class="contact-form">
+                        <label class="contact-form-group__label">お問い合わせ内容</label>
+                        <textarea name="content" class="input" required></textarea>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                    </div>
+
+                    <div class="contact-form__button" id="contact-form__confirm">確認画面へ</div>
+                </form>
+
+                <div id="contact-form-confirmation" class="contact-form">
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">お名前：</span>
+                        <p id="contact-form-confirmation__name" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">メールアドレス：</span>
+                        <p id="contact-form-confirmation__mail" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">お問い合わせ内容</span>
+                        <p id="contact-form-confirmation__content" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form__button" id="contact-form__back" class="enabled">編集画面に戻る</div>
+                    <div class="contact-form__button" id="contact-form__submit" class="enabled">送信する</div>
+                </div>
+            </div>
+        </div>
+    </main>
+<%- include("../component/_footer.ejs",{id:"contact",depth:1}) %>

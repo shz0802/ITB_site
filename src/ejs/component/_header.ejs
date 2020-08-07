@@ -1,0 +1,126 @@
+﻿<%
+    //variable settings
+    if(typeof depth === 'undefined'){depth = 0;}
+    if(typeof enableLoading === 'undefined'){enableLoading = null;}
+    if(typeof ogTitle === 'undefined'){ogTitle = title;}
+    if(typeof ogDescription === 'undefined'){ogDescription = description;}
+    if(depth==0){
+        srcPath = ".";
+    }else if(depth==1){
+        srcPath = "..";
+    }else if(depth==2){
+        srcPath = "../..";
+    }
+    linkList = [
+        {
+            name: "top",
+            title: "HOME",
+        },
+        {
+            name: "about",
+            title: "活動概要",
+        },
+        {
+            name: "news",
+            title: "お知らせ",
+        },
+        {
+            name: "event",
+            title: "企画",
+        },
+        {
+            name: "join",
+            title: "入部希望の方へ",
+        },
+        {
+            name: "contact",
+            title: "お問い合わせ",
+        }
+    ];
+-%>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165890491-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-165890491-1');</script>
+    <meta http-equiv="Content-Type" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description%>">
+    <meta property="og:title" content="<%= ogTitle %>">
+    <meta property="og:url" content="<%= ogURL %>">
+    <%_ if(id=="top"){ -%>
+    <meta property="og:type" content="website">
+    <%_ }else{ -%>
+    <meta property="og:type" content="article">
+    <%_ } -%>
+    <meta property="og:image" content="<%= ogImgURL %>">
+    <meta property="og:description" content="<%= ogDescription %>">
+    <meta property="og:site_name" content="第一高等学校・東京大学弁論部 公式サイト">
+    <meta name="twitter:card" content="<%= twitterCardType %>">
+    <meta name="twitter:site" content="@Todai_Benronbu">
+    <meta name="theme-color" content="#248bd1">
+    <link rel="icon" href="<%=srcPath%>/assets/image/logo/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%=srcPath%>/assets/image/logo/apple-touch-icon.png">
+    <%_ if(id=="top"){ -%>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/top.css">
+    <%_ }else{ -%>
+    <link rel="stylesheet" href="<%=srcPath%>/assets/css/subpage.css">
+    <%_ if(id=="news"){ -%>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <%_ } -%>
+    <%_ } -%>
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="<%=srcPath%>/assets/css/noscript.css">
+    </noscript>
+</head>
+<body ontouchstart>
+    <header id="header">
+        <div class="header__logo">
+            <svg id="header__circle" xmlns="https://www.w3.org/2000/svg"><circle class="circle"></circle></svg>
+            <div class="header__title-short">ITB</div>
+            <h1 class="header__title">第一高等学校<br>・東京大学弁論部</h1>
+            <a href="<%=srcPath%>/"></a>
+        </div>
+        <div id="header__menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <menu id="header-menu">
+        <ul class="header-menu__list">
+            <%_ for(let i=0;i<linkList.length;i++){ 
+                let link = linkList[i];
+            if(link["name"]==id){
+            -%>
+            <li class="header-menu__list-item is-current"><%= link["title"] %></li>
+            <%_}else{-%>
+            <li class="header-menu__list-item"><%= link["title"] -%><a href="<%=srcPath%>/<%if(link["name"]!="top"){%><%=link["name"]%><%}%>"></a></li>
+            <%_}-%>
+            <%_}-%>
+        </ul>
+    </menu>
+    <div id="page-cover"></div>
+    <%_ if(enableLoading){ -%>
+    <div id="enter-page" <%if(enableLoading){%>data-page-id="<%=enableLoading%>"<%}%>>
+        <div id="loading-icon">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <%_ if(id=="top"){ -%>
+        <div id="enter-page__title" data-chaffle="en">第一高等学校・東京大学弁論部</div>
+        <div id="enter-button">
+            <p id="enter-button__text">ENTER</p>
+        </div>
+        <%_ } -%>
+    </div>
+    <%_ } -%>
+    
+    <div id="container">

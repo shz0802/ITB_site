@@ -1,0 +1,71 @@
+<%
+    const labelList = {"management":"運営", "benron": "弁論", "debate": "ディベート", "event": "企画", "others": "その他"};
+    ogURL = "utbenron.com/dev/news/" + news.id;
+    if(news.img){
+        ogImgURL = "https://utbenron.com/assets/image/news/" + news.id + "/0.jpg";
+        twitterCardType = "summary_large_image";
+    }else{
+        ogImgURL = "https://utbenron.com/assets/image/logo/icon.png";
+        twitterCardType = "summary";
+    }
+-%>
+<%- include("../component/_header.ejs",{
+    id: "news",
+    depth: 1,
+    title: "お知らせ | " + news.title,
+    ogTitle: "お知らせ | " + news.title,
+    ogURL: ogURL,
+    description: news.content.text[0],
+    ogDescription: news.content.text[0],
+    ogImgURL: ogImgURL,
+    twitterCardType: twitterCardType,
+}); -%>
+    <main id="main" class="news-article">
+        <div class="main-lev1">
+            <div class="main-lev1__header">
+                <div class="main-lev1__header-date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
+                <div class="main-lev1__header-label label-<%= news.label %>"><%= labelList[news.label] %></div>
+                <h2 class="main-lev1__header-text"><%- news.title %></h2>
+            </div>
+            <article class="main-lev1__content">
+            <% let newsTextList = news.content.text; -%>
+            <% for(let i=0;i<newsTextList.length;i++){ -%>
+                <p><%- newsTextList[i] %></p>
+            <% } -%>
+            </article>
+            <% if(news.img){ %>
+                <ul class="main-news__img-list slider">
+                    <% let newsId = String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>
+                    <% for(let i=0;i<(news.content.imgNum);i++){ %>
+                        <li class="main-news__img-list-item slick-slide"><img src="../assets/image/news/<%= newsId %>/<%= String(i) %>.jpg" alt=""></li>
+                    <% } %>
+                </ul>
+            <% } %>
+
+            <div class="news-pagetransfer">
+            <% if(next){ -%>
+                <div class="news-pagetransfer__element news-pagetransfer__next">
+                    <p class="news-pagetransfer__text news-pagetransfer__next-text">次の投稿</p>
+                    <p class="news-pagetransfer__title news-pagetransfer__next-title"><%= next.title %></p>
+                    <a href="<%= String(next.year) + "-" + String(next.month) + "-" + String(next.day) + "_" + next.name %>.html"></a>
+                </div>
+            <% } -%>
+            <% if(prev){ -%>    
+                <div class="news-pagetransfer__element news-pagetransfer__prev">
+                    <p class="news-pagetransfer__text news-pagetransfer__prev-text">前の投稿</p>
+                    <p class="news-pagetransfer__title news-pagetransfer__prev-title"><%= prev.title %></p>
+                    <a href="<%= String(prev.year) + "-" + String(prev.month) + "-" + String(prev.day) + "_" + prev.name %>.html"></a>
+                </div>
+            <% } -%>
+                <div class="news-back">お知らせ一覧に戻る<a href="./"></a></div>
+            </div>
+        </div>
+
+        <div class="news-category">
+            <h3 class="news-category__title">カテゴリー別</h3>
+            <ul class="news-category__list">
+            </ul>
+        </div>
+        
+    </main>
+<%- include("../component/_footer",{id:"news",depth: 1}) %>

@@ -1,0 +1,118 @@
+<%- include("component/_header.ejs",{
+    id: "top",
+    depth: 0,
+    enableLoading: "top",
+    title: "第一高等学校・東京大学弁論部",
+    ogTitle: "第一高等学校・東京大学弁論部",
+    ogURL: "https://utbenron.com",
+    description: "第一高等学校・東京大学弁論部(ITB)は、弁論・ディベート・読書会を主な活動内容とする、東京大学の法学部公認サークルです。",
+    ogDescription: "第一高等学校・東京大学弁論部(ITB)は、弁論・ディベート・読書会を主な活動内容とする、東京大学の法学部公認サークルです。",
+    ogImgURL: "https://utbenron.com/assets/image/logo/logo-large.png",
+    twitterCardType: "summary_large_image"
+}); %>
+    <main id="main">
+        <div id="top-slider">
+            <ul id="top-slider__list">
+                <div class="swiper-wrapper">
+                    <li class="top-slider__list-item top-slider__img-microphone swiper-slide">
+                        <p class="top-slide__list-item__catch">「伝える」を、力に。</p>
+                        <img src="./assets/image/top/top-slider__microphone.jpg" alt="マイク">
+                    </li>
+                    <li class="top-slider__list-item top-slider__img-itbcup swiper-slide">
+                        <p class="top-slide__list-item__catch">「議論」を、日常に。</p>
+                        <img src="./assets/image/top/top-slider__itbcup.jpg" alt="第一回ITB杯">
+                    </li>
+                    <li class="top-slider__list-item top-slider__img-reading swiper-slide">
+                        <p class="top-slide__list-item__catch">「思索」の、その先へ。</p>
+                        <img src="./assets/image/top/top-slider__reading.jpg" alt="読書会">
+                    </li>
+                </div>
+            </ul>
+            <div id="top-slider__down"></div>
+        </div>
+
+        
+        <div id="top-info">
+            <h2 class="top-info__text">- 2020年度新歓資料 公開中 -</h2>
+            <a href="debate/2020_online-welcome-event_materials"></a>
+        </div>
+
+        <div class="top-news">
+            <h2 class="top-news__title">新着情報</h2>
+            <ul class="top-news__list" id="top-news__list"></ul>
+            <div class="top-news__more">お知らせ一覧を見る<a href="news/"></a></div>
+        </div>
+
+        <div class="top-card">
+            <h2 class="top-card__title card-benron">
+                <div class="top-card__title-text">弁論</div>
+            </h2>
+            <div class="top-card__image"><img src="assets/image/top/benron.jpg" alt="弁論"></div>
+            <div class="top-card__discription">
+                <div class="top-card__discription-text">弁論とは、演壇に立って特定のテーマについて語り、聴衆を説得する活動です</div>
+                <div class="top-card__more">詳細を見る →<a href="about/benron"></a></div> 
+            </div>
+        </div>
+
+        <div class="top-card">
+            <h2 class="top-card__title card-debate">
+                <div class="top-card__title-text">ディベート</div>
+            </h2>
+            <div class="top-card__image"><img src="assets/image/top/debate.jpg" alt="ディベート"></div>
+            <div class="top-card__discription">
+                <div class="top-card__discription-text">ディベートとは、あるテーマについて肯定側・否定側に分かれて討論を行う競技です</div>
+                <div class="top-card__more">詳細を見る →<a href="about/debate"></a></div> 
+            </div>
+        </div>
+        <div class="top-card">
+            <h2 class="top-card__title card-bukai">
+                <div class="top-card__title-text">読書会</div>
+            </h2>
+            <div class="top-card__image"><img src="assets/image/top/reading.jpg" alt="読書会"></div>
+            <div class="top-card__discription">
+                <div class="top-card__discription-text">様々な分野の書籍を題材として、興味のある部員で集まり一緒に学習を行います</div>
+                <div class="top-card__more">詳細を見る →<a href="about/reading"></a></div> 
+            </div>
+        </div>
+
+        <div class="top-twitter">
+            <h2 class="top-twitter__title">公式Twitter</h2>
+            <div id="top-twitter__content">
+                <a class="twitter-timeline" data-chrome="noheader notop-footer" data-width="400" data-height="600" data-link-color="#e4007f" href="https://twitter.com/Todai_Benronbu">(表示されない場合はこちら)</a>   
+            </div>
+        </div>
+    </main>
+    
+    <footer class="top-footer">
+        <div class="top-footer__title">
+            <div class="top-footer__title-jp">第一高等学校・東京大学弁論部</div>
+            <div class="top-footer__title-en">Ichiko Todai Benronbu</div>
+        </div>
+        <ul class="top-footer__list">
+            <li class="top-footer__list-item">
+                <div class="top-footer__list-item__title"><a href="about/">活動概要</a></div>
+                <ul class="top-footer__list-item__list">
+                    <li class="top-footer__list-item__list-item"><a href="about/benron">弁論</a></li>
+                    <li class="top-footer__list-item__list-item"><a href="about/debate">ディベート</a></li>
+                    <li class="top-footer__list-item__list-item"><a href="about/reading">読書会</a></li>
+                </ul>
+            </li>
+            <li class="top-footer__list-item">
+                <div class="top-footer__list-item__title"><a href="news/">お知らせ</a></div>
+            </li>
+            <li class="top-footer__list-item">
+                <div class="top-footer__list-item__title"><a href="event/">企画</a></div>
+            </li>
+            <li class="top-footer__list-item">
+                <div class="top-footer__list-item__title"><a href="join/">入部希望の方へ</a></div>
+                <ul class="top-footer__list-item__list">
+                    <li class="top-footer__list-item__list-item"><a href="join/2020">2020年度新歓</a></li>
+                </ul>
+            </li>
+            <li class="top-footer__list-item">
+                <div class="top-footer__list-item__title"><a href="">お問い合わせ</a></div>
+            </li>
+        </ul>
+        <small class="top-footer__copyright">© 2020 第一高等学校・東京大学弁論部</small>
+    </footer>
+<%- include("component/_footer.ejs",{id:"top"}) %>

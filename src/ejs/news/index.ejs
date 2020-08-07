@@ -1,0 +1,39 @@
+<%- include("../component/_header.ejs",{
+    id: "news",
+    depth: 1,
+    enableLoading: "news",
+    title: "お知らせ | 第一高等学校・東京大学弁論部",
+    ogTitle: "お知らせ | 第一高等学校・東京大学弁論部",
+    ogURL: "utbenron.com/news/",
+    description: "大会出場報告、企画のお知らせ、運営に関する告知など、弊部に関連した様々なお知らせを掲載しています。",
+    ogDescription: "大会出場報告、企画のお知らせ、運営に関する告知など、弊部に関連した様々なお知らせを掲載しています。",
+    ogImgURL: "https://utbenron.com/assets/image/news.jpg", //変更予定
+    twitterCardType: "summary"
+}); -%>
+    <main id="main" class="main-news">
+        <div id="subpage-top">
+            <div id="subpage-top__title">
+                <h2 id="subpage-top__title-text">お知らせ</h2>
+            </div>
+            <img id="subpage-top__img" src="../assets/image/news.jpg" alt="">
+            <div id="subpage-top__down">scroll</div>
+        </div>
+        <div class="main-lev1">
+            <h3 class="main-lev1__header" id="news-page__title">お知らせ一覧</h3>
+            <div class="main-lev1__content">
+                <ul class="main-news__list"></ul>
+            </div>
+            <div class="news-pagination">
+                <div class="news-pagination__list-container">
+                    <ul class="news-pagination__list"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="news-back-ontop">お知らせ一覧に戻る<a href="./"></a></div>
+        <div class="news-category">
+            <h3 class="news-category__title">カテゴリー別</h3>
+            <ul class="news-category__list">
+            </ul>
+        </div>
+    </main>
+<%- include("../component/_footer",{id:"news",depth: 1}) %>

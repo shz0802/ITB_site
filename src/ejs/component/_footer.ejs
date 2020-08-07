@@ -1,0 +1,31 @@
+<%_ if(id!="top"){-%>
+    <footer id="footer">
+        <small>© 2020 第一高等学校・東京大学弁論部</small>
+    </footer>
+<%_}-%>
+</div>
+
+<%_
+    if(typeof depth === 'undefined'){depth = 0}
+    if(depth==0){
+        srcPath = "./assets";
+    }else if(depth==1){
+        srcPath = "../assets";
+    }else if(depth==2){
+        srcPath = "../../assets";
+    }
+-%>
+    <%_ if(id=="top"){ -%>
+        <script src="<%=srcPath%>/js/top.js" type="text/javascript" charset="uft-8"></script>
+    <%_ }else{ -%>
+        <script src="<%=srcPath%>/js/common.js" type="text/javascript" charset="uft-8"></script>
+    <%_ } -%>
+    <%_ if(id=="news"){ -%>
+        <script src="<%=srcPath%>/js/lozad.min.js" type="text/javascript" charset="uft-8"></script>
+        <script src="<%=srcPath%>/js/news.js" type="text/javascript" charset="uft-8"></script>
+    <%_ } -%>
+    <%_ if(id=="contact"){ -%>
+        <script src="<%=srcPath%>/js/form.js" type="text/javascript" charset="uft-8"></script>
+    <%_ } -%>
+</body>
+</html>
