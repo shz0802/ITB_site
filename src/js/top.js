@@ -1,12 +1,10 @@
 ﻿import setting from './components/setting';
 import Swiper from 'swiper';
-import ShuffleText from 'shuffle-text';
 import setDrawer from './components/drawer';
 
 /*--- the very first action ---*/
 if(sessionStorage.getItem('utbenron-top')!='visited'){
-    document.getElementById('enter-page').style.display = 'block';
-    document.getElementById('loading-icon').classList.add('is-hidden');
+    document.getElementById('loading-screen').style.display = 'block';
 }
 
 /*--- delay function ---*/
@@ -21,8 +19,8 @@ function preventScroll(e) {
 
 /*--- initializing animation/processing ---*/
 const initializeTopPage = async ()=>{
-    document.getElementById('top-slider').classList.add('is-called');
-    let swiper = new Swiper('#top-slider__list', {
+    document.body.classList.remove('stopScroll');
+    new Swiper('#top-slider__list', {
         loop: true,
         effect: 'fade',
         fadeEffect: {
@@ -34,9 +32,10 @@ const initializeTopPage = async ()=>{
         }
     });
     document.removeEventListener(setting.bindTouchMove, preventScroll, { passive: false });
-    await delay(500);
-    document.body.classList.remove('stopScroll');
-    await delay(400);
+    await delay(250);
+    document.getElementById('top-slider').classList.add('is-called');
+    document.getElementById('loading-screen').style.display = 'none';
+    await delay(750);
     document.getElementById('top-slider__down').classList.add('is-called');
     document.getElementById('top-slider__down').addEventListener(setting.bindTouchStart, ()=>{
         let rectTop = document.getElementById('top-info').getBoundingClientRect().top;
@@ -89,30 +88,24 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(animationExcludeFlag || sessionStorage.getItem('utbenron-top')=='visited'){
         initializeTopPage();
     }else{
-        sessionStorage.setItem('utbenron-top','visited');
+        //sessionStorage.setItem('utbenron-top','visited');
         document.body.scrollIntoView();
         document.addEventListener(setting.bindTouchMove, preventScroll, { passive: false });
 
         Promise.resolve()
         .then(()=>{
             document.body.classList.add('stopScroll');
-            document.getElementById('top-slider').classList.add('is-called');
-            return delay(100);
+            document.getElementById('loading-screen__title').classList.add('is-shown');
+            return delay(1500);
         })
         .then(()=>{
-            var text = new ShuffleText(document.getElementById('enter-page__title'));
-            text.duration = 1500;
-            text.start();
-            return delay(1750);
+            document.getElementById('loading-icon').classList.add('is-hidden');
+            document.getElementById('loading-screen__title').classList.remove('is-shown');
+            return delay(250);
         })
         .then(()=>{
-            document.getElementById('enter-button').classList.add('is-called');
-            document.getElementById('enter-button').addEventListener(setting.bindTouchStart, async ()=>{
-                document.getElementById('enter-page').classList.add('is-over');
-                await delay(600);
-                initializeTopPage();
-                document.getElementById('enter-page').classList.add('is-hidden');
-            });
+            document.getElementById('loading-screen').classList.add('is-hidden');
+            initializeTopPage();
         });
     }
 

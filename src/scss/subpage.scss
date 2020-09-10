@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import "base";
+@import "normalize";
 @import "settings";
 @import "common";
 @import "header";
@@ -244,26 +244,24 @@
                     }
                 }
             }
-            /*
             &:after{
                 content: "";
                 display: block;
                 position: absolute;
-                top: -7.5vw;
-                left: -10vw;
-                width: 100vw;
-                height: calc(100vh - 7.5vw);
-                background-color: $base-bg-color;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: lighten($base-black, 10%);
                 transition: 0s all ease-in-out;
-                transform: scaleX(1);
-                transform-origin: left;
+                opacity: 1;
             }
             &.is-called{
                 &:after{
                     transition: .5s;
-                    transform: scaleX(0);
+                    opacity: 0;
                 }
-            }*/
+            }
         }
         #subpage-top__down{
             position: absolute;

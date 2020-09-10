@@ -3,9 +3,9 @@ import $ from 'jquery';
 import setDrawer from './components/drawer';
 
 /*--- the very first action ---*/
-const pageId = document.getElementById('enter-page')?document.getElementById('enter-page').dataset.pageId:null;
+const pageId = document.getElementById('loading-screen')?document.getElementById('loading-screen').dataset.pageId:null;
 if(sessionStorage.getItem('utbenron-'+pageId)!='visited'&&pageId){
-    document.getElementById('enter-page').style.display = 'block';
+    document.getElementById('loading-screen').style.display = 'block';
 }
 if(pageId){
     Array.prototype.forEach.call(document.getElementsByClassName('main-lev1'), element=>element.classList.add('is-waiting'));
@@ -24,13 +24,13 @@ function preventScroll(event) {
 /*--- initializing animation/processing ---*/
 const initializeSubPage = async ()=>{
     document.removeEventListener(setting.bindTouchMove, preventScroll, {passive: false});
-    await delay(100);
     document.body.classList.remove('stopScroll');
     document.getElementById('subpage-top__title').classList.add('is-called');
-    await delay(400);
+    await delay(250);
     document.getElementById('subpage-top__title-text').classList.add('is-called');
     Array.prototype.forEach.call(document.getElementsByClassName('main-lev1'), element=>element.classList.remove('is-waiting'));
     await delay(400);
+    document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('subpage-top__down').classList.add('is-called');
     document.getElementById('subpage-top__down').addEventListener(setting.bindTouchStart, ()=>{
         let rectTop = document.getElementById('subpage-top').getBoundingClientRect().bottom;
@@ -76,15 +76,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
             Promise.resolve()
             .then(()=>{
-                return delay(750);
+                return delay(500);
             })
             .then(()=>{
                 document.getElementById('loading-icon').classList.add('is-hidden');
-                return delay(750);
+                return delay(250);
             })
             .then(()=>{
-                document.getElementById('enter-page').classList.add('is-hidden');
-                return delay(500)
+                document.getElementById('loading-screen').classList.add('is-hidden');
+                return delay(500);
             })
             .then(initializeSubPage);
         }

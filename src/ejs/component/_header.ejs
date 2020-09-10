@@ -106,19 +106,10 @@
     </menu>
     <div id="page-cover"></div>
     <%_ if(enableLoading){ -%>
-    <div id="enter-page" <%if(enableLoading){%>data-page-id="<%=enableLoading%>"<%}%>>
-        <div id="loading-icon">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-        </div>
+    <div id="loading-screen" <%if(enableLoading){%>data-page-id="<%=enableLoading%>"<%}%>>
+        <div id="loading-icon"></div>
         <%_ if(id=="top"){ -%>
-        <div id="enter-page__title" data-chaffle="en">第一高等学校・東京大学弁論部</div>
-        <div id="enter-button">
-            <p id="enter-button__text">ENTER</p>
-        </div>
+        <div id="loading-screen__title" data-chaffle="en">第一高等学校・東京大学弁論部</div>
         <%_ } -%>
     </div>
     <%_ } -%>
