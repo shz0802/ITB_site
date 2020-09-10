@@ -1,11 +1,16 @@
 ﻿import setting from './components/setting';
 import Swiper from 'swiper';
 import setDrawer from './components/drawer';
+import lozad from 'lozad';
 
 /*--- the very first action ---*/
 if(sessionStorage.getItem('utbenron-top')!='visited'){
     document.getElementById('loading-screen').style.display = 'block';
 }
+
+/*--- lazyload setting ---*/
+const observer = lozad();
+observer.observe();
 
 /*--- delay function ---*/
 const delay = t => {
@@ -88,7 +93,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(animationExcludeFlag || sessionStorage.getItem('utbenron-top')=='visited'){
         initializeTopPage();
     }else{
-        //sessionStorage.setItem('utbenron-top','visited');
+        sessionStorage.setItem('utbenron-top','visited');
         document.body.scrollIntoView();
         document.addEventListener(setting.bindTouchMove, preventScroll, { passive: false });
 
@@ -96,7 +101,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         .then(()=>{
             document.body.classList.add('stopScroll');
             document.getElementById('loading-screen__title').classList.add('is-shown');
-            return delay(1500);
+            return delay(1000);
         })
         .then(()=>{
             document.getElementById('loading-icon').classList.add('is-hidden');
@@ -135,7 +140,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     /*--- twitter ---*/
     document.getElementById('top-twitter__content').style.display = 'none';
-    const observer = new MutationObserver(records => {
+    const mutationObserver = new MutationObserver(records => {
         if(records[0]["removedNodes"].length!=0&&document.getElementById('twitter-widget-0')){
             let twitterWidget = document.getElementById('twitter-widget-0');
             twitterWidget.removeAttribute('style');
@@ -164,7 +169,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             });
         }
     })
-    observer.observe(document.getElementById('top-twitter__content'), {
+    mutationObserver.observe(document.getElementById('top-twitter__content'), {
         attributes: true,
         attributeFilter: ['style'],
         childList: true
