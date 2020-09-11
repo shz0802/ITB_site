@@ -31,6 +31,10 @@ const initializeTopPage = async ()=>{
         speed: 1500,
         autoplay: {
             delay: 2500
+        },
+        preloadImages: false,
+        lazy: {
+            loadPrevNext: true,
         }
     });
     document.removeEventListener(setting.bindTouchMove, preventScroll, { passive: false });
