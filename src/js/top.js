@@ -72,14 +72,15 @@ const initializeTopPage = async ()=>{
 
 /*--- after contents are loaded ---*/
 document.addEventListener('DOMContentLoaded', ()=>{
-    /*--- setting for custom vh ---*/
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-    /*--- lazyload setting ---*/
+    
     window.onload = ()=>{
+        /*--- lazyload setting ---*/
         const observer = lozad();
         observer.observe();
+
+        /*--- setting for custom vh ---*/
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
     
     /*--- set drawer for smartphone ---*/

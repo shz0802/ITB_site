@@ -46,9 +46,12 @@ const initializeSubPage = async ()=>{
 
 /*--- after contents are loaded ---*/
 document.addEventListener('DOMContentLoaded', ()=>{
-    /*--- setting for custom vh ---*/
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    window.onload = ()=>{
+        /*--- setting for custom vh ---*/
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
 
     /*--- set drawer for smartphone ---*/
     setDrawer();
