@@ -10,6 +10,7 @@ const fs =require('fs');
 const webpackStream = require("webpack-stream");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config.js");
+const topNewsNum = 3;
 
 const fileDir = {
     srcEjs: ["src/ejs/**/*.ejs","!src/ejs/**/_*.ejs"],
@@ -22,9 +23,10 @@ const fileDir = {
 }
 
 const compileEjs = ()=>{
+    topNewsList = JSON.parse(fs.readFileSync(fileDir.newsJson, 'utf8'))["news-list"].slice(0,topNewsNum);
     return gulp.src(fileDir.srcEjs)
         .pipe(plumber())
-        .pipe(ejs())
+        .pipe(ejs(topNewsList,{"ext": ".html"}))
         .pipe(rename({extname:".html"}))
         .pipe(gulp.dest("dist/"));
 }

@@ -56,30 +56,6 @@ window.onload = ()=>{
         smoothScroll(diff);
     });
 
-    /*--- latest news list ---*/
-    const displayNum = 3;
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = ()=>{
-        if(xhr.readyState == 4){
-            if(xhr.status == 200){
-                let newsList = JSON.parse(xhr.responseText)['news-list'];
-                for(let i=0;i<displayNum;i++){
-                    let news = newsList[i];
-                    let newsDOM = "<li class='top-news__list-item'>"
-                                + "<div class='top-news__list-item__date'>" + String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) + "</div>"
-                                + "<div class='top-news__list-item__title'><a href='news/" + setting.createNewsId(news) + "'>" + news.title + "</a></div>"
-                                + "<div class='top-news__list-item__label " + "label-" + news.label +"'>" + setting.newsLabel[news.label] + "</div>"
-                                + "</li>"
-                    document.getElementById('top-news__list').insertAdjacentHTML('beforeend',newsDOM);
-                }
-            }else{
-                console.error(xhr.status+':'+xhr.statusText);
-            }
-        }
-    }
-    xhr.open('GET', './assets/json/news-list.json', true);
-    xhr.send();
-
     let twitterscript = document.createElement('script');
     twitterscript.src = 'https://platform.twitter.com/widgets.js';
     document.head.appendChild(twitterscript);

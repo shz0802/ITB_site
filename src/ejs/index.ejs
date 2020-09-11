@@ -39,7 +39,20 @@
 
         <div class="top-news">
             <h2 class="top-news__title">新着情報</h2>
-            <ul class="top-news__list" id="top-news__list"></ul>
+            <ul class="top-news__list" id="top-news__list">
+                <%_ for(let i=0;i<topNewsList.length;i++){ 
+                    let news = topNewsList[i];
+                    let newsLabel = {"management":"運営", "benron": "弁論", "debate": "ディベート", "event": "企画", "others": "その他"};
+                -%>
+                <li class="top-news__list-item">
+                    <div class="top-news__list-item__date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
+                    <div class="top-news__list-item__title">
+                        <a href="<%= String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>"><%= news.title %></a>
+                    </div>
+                    <div class="top-news__list-item__label label-<%= news.label %>"><%= newsLabel[news.label] %></div>
+                </li>
+                <%_}-%>
+            </ul>
             <div class="top-news__more">お知らせ一覧を見る<a href="news/"></a></div>
         </div>
 
