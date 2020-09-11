@@ -1,5 +1,6 @@
 ﻿import setting from './components/setting';
 import setDrawer from './components/drawer';
+import 'babel-polyfill';
 
 /*--- the very first action ---*/
 const pageId = document.getElementById('loading-screen')?document.getElementById('loading-screen').dataset.pageId:null;

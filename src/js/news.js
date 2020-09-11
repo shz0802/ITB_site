@@ -23,7 +23,6 @@ $(()=>{
     }
 
     let queries = getQueries(location.search.slice(1));
-    console.log(location.pathname);
     if(location.pathname=="/news/"||location.pathname=="/dev/news/"){
         $.ajax({
             url: "../assets/json/news-list.json",
