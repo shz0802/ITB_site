@@ -16,31 +16,6 @@
             height: calc(100vh - 7.5vw);
             background-color: lighten($base-black,10%);
         }
-        &:before{
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: calc(100vh - 17.5vw);
-            height: calc(var(--vh, 1vh) * 100 - 17.5vw);
-            background-color: lighten($base-black,10%);
-            z-index: 500;
-            transition: 0s transform ease-in-out;
-            transform: scaleX(1);
-            transform-origin: left;
-            @include mq(lg){
-                height: calc(100vh - 7.5vw);
-                background-color: lighten($base-black,10%);
-            }
-        }
-        &.is-called{
-            &:before{
-                transition: .5s transform ease-in-out .2s;
-                transform: scaleX(0);
-            }
-        }
         #top-slider__list{
             position: relative;
             width: 100vw;
@@ -174,8 +149,7 @@
                 transform: rotate(45deg);
                 z-index: 300;
                 animation: moveDownArrow 1.5s infinite ease-in-out;
-                opacity: 0;
-                transition: 0s opacity ease-in-out;
+                opacity: 1;
                 @keyframes moveDownArrow {
                     0% {top: -3vw;}
                     50% {top: 0;}
@@ -188,12 +162,6 @@
                         50% {top: 1vw;}
                         100% {top: 0;}
                     }   
-                }
-            }
-            &.is-called{
-                &:after{
-                    opacity: 1;
-                    transition: .5s opacity ease-in-out;
                 }
             }
         }

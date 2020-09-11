@@ -4,45 +4,34 @@ import 'style-loader!css-loader!swiper/css/swiper.css';
 import setDrawer from './components/drawer';
 import lozad from 'lozad';
 
-/*--- the very first action ---*/
-if(sessionStorage.getItem('utbenron-top')!='visited'){
-    document.getElementById('loading-screen').style.display = 'block';
-}
+new Swiper('#top-slider__list', {
+    loop: true,
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true
+    },
+    speed: 1500,
+    autoplay: {
+        delay: 2500
+    },
+    preloadImages: false,
+    lazy: {
+        loadPrevNext: true,
+    }
+});
 
-/*--- delay function ---*/
-const delay = t => {
-    return new Promise(resolve=>setTimeout(resolve,t));
-}
+window.onload = ()=>{
+    /*--- lazyload setting ---*/
+    const observer = lozad();
+    observer.observe();
 
-/*--- prevent scroll ---*/
-function preventScroll(e) {
-    e.preventDefault();
-}
+    /*--- setting for custom vh ---*/
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
 
-/*--- initializing animation/processing ---*/
-const initializeTopPage = async ()=>{
-    document.body.classList.remove('stopScroll');
-    new Swiper('#top-slider__list', {
-        loop: true,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-        speed: 1500,
-        autoplay: {
-            delay: 2500
-        },
-        preloadImages: false,
-        lazy: {
-            loadPrevNext: true,
-        }
-    });
-    document.removeEventListener(setting.bindTouchMove, preventScroll, { passive: false });
-    await delay(250);
-    document.getElementById('top-slider').classList.add('is-called');
-    document.getElementById('loading-screen').style.display = 'none';
-    await delay(750);
-    document.getElementById('top-slider__down').classList.add('is-called');
+    /*--- set drawer for smartphone ---*/
+    setDrawer();
+
     document.getElementById('top-slider__down').addEventListener(setting.bindTouchStart, ()=>{
         let rectTop = document.getElementById('top-info').getBoundingClientRect().top;
         let buffer = window.innerWidth<1024?window.innerWidth*0.25:window.innerWidth*0.15 - 10;
@@ -67,61 +56,6 @@ const initializeTopPage = async ()=>{
         smoothScroll(diff);
     });
 
-    let twitterscript = document.createElement('script');
-    twitterscript.src = 'https://platform.twitter.com/widgets.js';
-    document.head.appendChild(twitterscript);
-};
-
-
-/*--- after contents are loaded ---*/
-document.addEventListener('DOMContentLoaded', ()=>{
-    
-    window.onload = ()=>{
-        /*--- lazyload setting ---*/
-        const observer = lozad();
-        observer.observe();
-
-        /*--- setting for custom vh ---*/
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
-    
-    /*--- set drawer for smartphone ---*/
-    setDrawer();
-
-    /*--- animation for top page ---*/
-    //exclude chrome on iOS
-    let ua = window.navigator.userAgent.toLowerCase();
-    let animationExcludeFlag = false;
-    if(ua.indexOf('chrome')!==-1&&ua.indexOf('ios')!==-1){
-        animationExcludeFlag = true;
-    }
-
-    //already visited?
-    if(animationExcludeFlag || sessionStorage.getItem('utbenron-top')=='visited'){
-        initializeTopPage();
-    }else{
-        sessionStorage.setItem('utbenron-top','visited');
-        document.body.scrollIntoView();
-        document.addEventListener(setting.bindTouchMove, preventScroll, { passive: false });
-
-        Promise.resolve()
-        .then(()=>{
-            document.body.classList.add('stopScroll');
-            document.getElementById('loading-screen__title').classList.add('is-shown');
-            return delay(1000);
-        })
-        .then(()=>{
-            document.getElementById('loading-icon').classList.add('is-hidden');
-            document.getElementById('loading-screen__title').classList.remove('is-shown');
-            return delay(250);
-        })
-        .then(()=>{
-            document.getElementById('loading-screen').classList.add('is-hidden');
-            initializeTopPage();
-        });
-    }
-
     /*--- latest news list ---*/
     const displayNum = 3;
     let xhr = new XMLHttpRequest();
@@ -145,6 +79,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
     xhr.open('GET', './assets/json/news-list.json', true);
     xhr.send();
+
+    let twitterscript = document.createElement('script');
+    twitterscript.src = 'https://platform.twitter.com/widgets.js';
+    document.head.appendChild(twitterscript);
 
     /*--- twitter ---*/
     document.getElementById('top-twitter__content').style.display = 'none';
@@ -182,8 +120,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         attributeFilter: ['style'],
         childList: true
     });
-});
-
+}
 
 /*--- on resize ---*/
 let timeoutId;
