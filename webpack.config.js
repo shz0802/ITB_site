@@ -1,5 +1,8 @@
+const MODE = "development";
+const enabledSourceMap = MODE === "development";
+
 module.exports = {
-    mode: 'production',
+    mode: MODE,
     entry: {
         "top": "./src/js/top.js",
         "common": "./src/js/common.js",
@@ -13,8 +16,24 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ["style-loader","css-loader"]
+                test: /\.(sa|sc|c)ss$/,
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false,
+                            sourceMap: enabledSourceMap
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: enabledSourceMap
+                        }
+                    }
+                ]
             }
         ],
         rules: [

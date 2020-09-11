@@ -2,6 +2,7 @@ const gulp = require("gulp");
 const ejs = require("gulp-ejs");
 const sass = require("gulp-sass");
 const autoprefixer = require("gulp-autoprefixer");
+const cleanCSS = require("gulp-clean-css");
 const browserSync = require("browser-sync");
 const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
@@ -38,6 +39,7 @@ const compileSass = ()=>{
         }))
         .pipe(sass())
         .pipe(autoprefixer())
+        .pipe(cleanCSS())
         .pipe(gulp.dest(fileDir.distCss))
         .pipe(browserSync.reload({stream: true}));
 };
