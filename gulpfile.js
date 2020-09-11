@@ -4,7 +4,6 @@ const sass = require("gulp-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const browserSync = require("browser-sync");
 const plumber = require("gulp-plumber");
-const uglify = require("gulp-uglify-es").default;
 const rename = require("gulp-rename");
 const fs =require('fs');
 const webpackStream = require("webpack-stream");

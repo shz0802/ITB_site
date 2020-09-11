@@ -3,7 +3,6 @@ import Swiper from 'swiper';
 import 'style-loader!css-loader!swiper/css/swiper.css';
 import setDrawer from './components/drawer';
 import lozad from 'lozad';
-import 'babel-polyfill';
 
 /*--- the very first action ---*/
 if(sessionStorage.getItem('utbenron-top')!='visited'){
