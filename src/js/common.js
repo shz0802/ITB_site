@@ -1,5 +1,4 @@
 ﻿import setting from './components/setting';
-import $ from 'jquery';
 import setDrawer from './components/drawer';
 
 /*--- the very first action ---*/

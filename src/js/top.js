@@ -8,10 +8,6 @@ if(sessionStorage.getItem('utbenron-top')!='visited'){
     document.getElementById('loading-screen').style.display = 'block';
 }
 
-/*--- lazyload setting ---*/
-const observer = lozad();
-observer.observe();
-
 /*--- delay function ---*/
 const delay = t => {
     return new Promise(resolve=>setTimeout(resolve,t));
@@ -78,6 +74,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
+    /*--- lazyload setting ---*/
+    window.onload = ()=>{
+        const observer = lozad();
+        observer.observe();
+    }
+    
     /*--- set drawer for smartphone ---*/
     setDrawer();
 

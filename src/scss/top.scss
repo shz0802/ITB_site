@@ -449,7 +449,6 @@
             width: 100%;
             height: 100%;
             @include mq(lg){
-                top: -12.5vw;
                 left: 35vw;
                 width: 65vw;
             }
