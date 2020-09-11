@@ -38,7 +38,7 @@
                 &.is-small{font-size: 6vw;}
                 line-height: $title-text-height;
                 z-index: 100;
-                transition: .5s all ease-in-out;
+                transition: .5s transform ease-in-out;
                 &:before,&:after{
                     content: "";
                     display: block;
@@ -48,7 +48,7 @@
                     left: 0;
                     height: 1.5px;
                     background-color: $base-white;
-                    transition: 0s all ease-in-out;
+                    transition: .5s transform ease-in-out;
                 }
                 &:before{
                     top: -1.5px;
@@ -60,7 +60,6 @@
                 }
                 &.is-called{
                     &:before,&:after{
-                        transition: .5s;
                         transform: scaleX(1);
                     }
                 }
@@ -101,7 +100,7 @@
                 &.is-small{font-size: 6vw;}
                 line-height: $title-text-height;
                 z-index: 100;
-                transition: .5s all ease-in-out;
+                transition: .5s transform ease-in-out;
                 &:before,&:after{
                     content: "";
                     display: block;
@@ -111,7 +110,7 @@
                     left: 0;
                     height: 1.5px;
                     background-color: $base-white;
-                    transition: 0s all ease-in-out;
+                    transition: .5s transform ease-in-out;
                 }
                 &:before{
                     top: -1.5px;
@@ -123,7 +122,6 @@
                 }
                 &.is-called{
                     &:before,&:after{
-                        transition: .5s;
                         transform: scaleX(1);
                     }
                 }
@@ -193,13 +191,12 @@
                     width: 80%;
                     height: 1.5px;
                     background-color: $base-white;
-                    transition: 0s all ease-in-out;
+                    transition: .5s transform ease-in-out;
                     transform: scaleX(0);
                     transform-origin: left;
                 }
                 &.is-called{
                     &:after{
-                        transition: .5s;
                         transform: scaleX(1);
                     }
                 }
@@ -213,12 +210,11 @@
                 width: 100%;
                 height: 100%;
                 background-color: lighten($base-black, 10%);
-                transition: 0s all ease-in-out;
+                transition: .5s opacity ease-in-out;
                 opacity: 1;
             }
             &.is-called{
                 &:after{
-                    transition: .5s;
                     opacity: 0;
                 }
             }
@@ -244,7 +240,7 @@
                 border-right: 2px solid $base-white;
                 top: -5vw;
                 left: 1vw;
-                transition: .3s all ease-in-out;
+                transition: .3s transform ease-in-out;
                 transform: rotate(45deg) translateY(0);
             }
             &:hover{
@@ -269,17 +265,6 @@
         margin-bottom: 0;
         @include mq(lg){
             margin-bottom: 2.5vw;
-        }
-    }
-    transition: .5s all ease-in-out;
-    opacity: 1;
-    transform: translateY(0);
-    &.is-waiting{
-        transition: 0s;
-        opacity: 0;
-        transform: translateY(5vw);
-        @include mq(lg){
-            transform: translateY(0);
         }
     }
     @include mq(lg){

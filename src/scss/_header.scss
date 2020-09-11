@@ -7,7 +7,7 @@
     height: $sp-nav-height;
     background-color: $base-color;
     z-index: 100;
-    transition: .5s all ease-in-out;
+    transition: .5s transform ease-in-out;
     box-shadow: 0 0 3px 3px rgba(0,0,0,0.2);
     opacity: 0.95;
     &.is-open{
