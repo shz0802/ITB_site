@@ -57,46 +57,49 @@ window.onload = ()=>{
         smoothScroll(diff);
     });
 
-    let twitterscript = document.createElement('script');
-    twitterscript.src = 'https://platform.twitter.com/widgets.js';
-    document.head.appendChild(twitterscript);
+    setTimeout(()=>{
+        let twitterscript = document.createElement('script');
+        twitterscript.src = 'https://platform.twitter.com/widgets.js';
+        twitterscript.async = 'true';
+        document.head.appendChild(twitterscript);
 
-    /*--- twitter ---*/
-    document.getElementById('top-twitter__content').style.display = 'none';
-    const mutationObserver = new MutationObserver(records => {
-        if(records[0]["removedNodes"].length!=0&&document.getElementById('twitter-widget-0')){
-            let twitterWidget = document.getElementById('twitter-widget-0');
-            twitterWidget.removeAttribute('style');
-            twitterWidget.contentWindow.document.querySelector('.timeline-Body').style.border = 'none';
-            twitterWidget.contentWindow.document.querySelector('.timeline-Widget').style.backgroundColor = '#fcfcfc';
-            twitterWidget.contentWindow.document.querySelector('.timeline-Widget').style.fontFamily = 'Noto Sans JP';
-            Array.prototype.forEach.call(twitterWidget.contentWindow.document.getElementsByClassName('timeline-Tweet-text'), element=>{
-                element.style.fontSize = '15px';
-                element.style.lineHeight = '1.5';
-            });
-            twitterWidget.contentWindow.document.querySelector('footer.timeline-Footer').style.display = 'none';
-            twitterWidget.classList.add('enabled');
-            let twitterWrapper = document.getElementById('top-twitter__content');
-            twitterWrapper.style.opacity = 0;
-            twitterWrapper.style.display = 'block';
-            let start = performance.now();
-            let duration = 500;
-            requestAnimationFrame(function tick(timestamp) {
-                var easing = (timestamp - start) / duration;
-                twitterWrapper.style.opacity = Math.min(easing, 1);
-                if(easing<1) {
-                    requestAnimationFrame(tick);
-                }else{
-                    twitterWrapper.style.opacity = '';
-                }
-            });
-        }
-    })
-    mutationObserver.observe(document.getElementById('top-twitter__content'), {
-        attributes: true,
-        attributeFilter: ['style'],
-        childList: true
-    });
+        /*--- twitter ---*/
+        document.getElementById('top-twitter__content').style.display = 'none';
+        const mutationObserver = new MutationObserver(records => {
+            if(records[0]["removedNodes"].length!=0&&document.getElementById('twitter-widget-0')){
+                let twitterWidget = document.getElementById('twitter-widget-0');
+                twitterWidget.removeAttribute('style');
+                twitterWidget.contentWindow.document.querySelector('.timeline-Body').style.border = 'none';
+                twitterWidget.contentWindow.document.querySelector('.timeline-Widget').style.backgroundColor = '#fcfcfc';
+                twitterWidget.contentWindow.document.querySelector('.timeline-Widget').style.fontFamily = 'Noto Sans JP';
+                Array.prototype.forEach.call(twitterWidget.contentWindow.document.getElementsByClassName('timeline-Tweet-text'), element=>{
+                    element.style.fontSize = '15px';
+                    element.style.lineHeight = '1.5';
+                });
+                twitterWidget.contentWindow.document.querySelector('footer.timeline-Footer').style.display = 'none';
+                twitterWidget.classList.add('enabled');
+                let twitterWrapper = document.getElementById('top-twitter__content');
+                twitterWrapper.style.opacity = 0;
+                twitterWrapper.style.display = 'block';
+                let start = performance.now();
+                let duration = 500;
+                requestAnimationFrame(function tick(timestamp) {
+                    var easing = (timestamp - start) / duration;
+                    twitterWrapper.style.opacity = Math.min(easing, 1);
+                    if(easing<1) {
+                        requestAnimationFrame(tick);
+                    }else{
+                        twitterWrapper.style.opacity = '';
+                    }
+                });
+            }
+        })
+        mutationObserver.observe(document.getElementById('top-twitter__content'), {
+            attributes: true,
+            attributeFilter: ['style'],
+            childList: true
+        });
+    },2000);
 }
 
 /*--- on resize ---*/
