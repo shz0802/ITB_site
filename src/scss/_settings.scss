@@ -11,15 +11,6 @@ $color-others: #777;
 $sp-nav-height: 17.5vw;
 $lg-nav-height: 7.5vw;
 
-//font
-body{font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif}
-html {
-    .first-view-letters{visibility: hidden;}
-    &.wf-active {
-        .first-view-letters{visibility: visible;}
-    }
-}
-
 //mixin
 $breakpoints:(
     'sm': 'screen and (max-width: 599px)',
