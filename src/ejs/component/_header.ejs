@@ -82,8 +82,8 @@
             <svg id="header__circle" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 100">
                 <circle class="circle" cx="-15" cy="50" r="100"></circle>
             </svg>
-            <div class="header__title-short">ITB</div>
-            <h1 class="header__title">第一高等学校<br>・東京大学弁論部</h1>
+            <div class="header__title-short first-view-letters">ITB</div>
+            <h1 class="header__title first-view-letters">第一高等学校<br>・東京大学弁論部</h1>
             <a href="<%=srcPath%>/"></a>
         </div>
         <div id="header__menu-trigger">
@@ -98,9 +98,12 @@
                 let link = linkList[i];
             if(link["name"]==id){
             -%>
-            <li class="header-menu__list-item is-current"><%= link["title"] %></li>
+            <li class="header-menu__list-item is-current"><span class="first-view-letters"><%= link["title"] %></span></li>
             <%_}else{-%>
-            <li class="header-menu__list-item"><%= link["title"] -%><a href="<%=srcPath%>/<%if(link["name"]!="top"){%><%=link["name"]%><%}%>"></a></li>
+            <li class="header-menu__list-item">
+                <span class="first-view-letters"><%= link["title"] -%></span>
+                <a href="<%=srcPath%>/<%if(link["name"]!="top"){%><%=link["name"]%><%}%>"></a>
+            </li>
             <%_}-%>
             <%_}-%>
         </ul>

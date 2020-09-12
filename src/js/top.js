@@ -4,27 +4,28 @@ import 'style-loader!css-loader!swiper/css/swiper.css';
 import setDrawer from './components/drawer';
 import lozad from 'lozad';
 
-new Swiper('#top-slider__list', {
-    loop: true,
-    effect: 'fade',
-    fadeEffect: {
-        crossFade: true
-    },
-    speed: 1500,
-    autoplay: {
-        delay: 2500
-    },
-    preloadImages: false,
-    lazy: {
-        loadPrevNext: true,
-    }
-});
-
 window.onload = ()=>{
     /*--- lazyload setting ---*/
     const observer = lozad();
     observer.observe();
 
+    new Swiper('#top-slider__list', {
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 1500,
+        autoplay: {
+            delay: 2500
+        },
+        preloadImages: false,
+        lazy: {
+            loadPrevNext: true,
+        }
+    });
+    document.querySelectorAll(['.top-slider__list-item']).forEach(s=>{s.style.visibility = "visible";});
+    
     /*--- setting for custom vh ---*/
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
