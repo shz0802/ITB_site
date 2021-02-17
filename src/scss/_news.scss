@@ -1,5 +1,5 @@
 #main{
-    .main-news__list{
+    #main-news__list{
         position: relative;
         width: 100%;
         margin: 7.5vw auto;
@@ -220,7 +220,7 @@
         }
     }
     
-    .news-pagination{
+    #news-pagination{
         position: relative;
         width: 100%;
         margin-top: 0vw;
@@ -313,7 +313,7 @@
                 }
             }
         }
-        .news-pagination__list-container{
+        #news-pagination__list-container{
             position: relative;
             width: 65%;
             height: 12.5vw;
@@ -328,7 +328,7 @@
                 padding-bottom: 2.5vw;
                 margin: 0 30% 0;
             }
-            .news-pagination__list{
+            #news-pagination__list{
                 display: flex;
                 flex-flow: row nowrap;
                 position: absolute;

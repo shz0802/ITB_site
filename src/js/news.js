@@ -20,7 +20,7 @@ window.onload = async ()=>{
     for (let label in labelList) {
 
         let labelDOM = document.createElement('li');
-        labelDOM.setAttribute('class', 'news-category__list-item');
+        labelDOM.classList.add('news-category__list-item');
         let link = document.createElement('a');
         link.setAttribute('href', './?filter='+ label);
         link.textContent = labelList[label];
@@ -42,7 +42,6 @@ window.onload = async ()=>{
         let res = await fetch("../assets/json/news-list.json");
         if(res.ok){
             let data = await res.json();
-            console.log(data);
             let newsList = data["news-list"];
             let pageId = queries["page"]?parseInt(queries["page"]):1;
 
@@ -54,7 +53,7 @@ window.onload = async ()=>{
                         return news["label"] == filter;
                     });
                     document.getElementById('subpage-top').style.display = 'none';
-                    document.getElementById('main').setAttribute('class', 'news-page-no-top');
+                    document.getElementById('main').classList.add('news-page-no-top');
                     document.getElementById('news-page__title').textContent = 'カテゴリー：' + labelList[filter];
                 }
             }else{
@@ -68,16 +67,16 @@ window.onload = async ()=>{
                 window.location.search = "";
             }else if(pageId>1){
                 document.getElementById('subpage-top').style.display = 'none';
-                document.getElementById('main').setAttribute('class', 'news-page-no-top');
+                document.getElementById('main').classList.add('news-page-no-top');
             }
             
             if(maxPageNum>1){
                 //pagination作る
                 for(let i=1;i<maxPageNum+1;i++){
                     let paginationDOM = document.createElement('li');
-                    paginationDOM.setAttribute('class', 'news-pagination__list-item');
+                    paginationDOM.classList.add('news-pagination__list-item');
                     if(i==pageId){
-                        paginationDOM.setAttribute('class', 'is-current');
+                        paginationDOM.classList.add('is-current');
                         paginationDOM.textContent = String(i);
                     }else{
                         let link = document.createElement('a');
@@ -91,7 +90,7 @@ window.onload = async ()=>{
 
                 //pagination next/prev作る
                 let newsPaginationDOM = document.createElement('div');
-                newsPaginationDOM.setAttribute('class', 'news-pagination__text');
+                newsPaginationDOM.classList.add('news-pagination__text');
                 let p = document.createElement('p');
                 let link = document.createElement('a');
                 if(pageId!=1){    
@@ -112,71 +111,53 @@ window.onload = async ()=>{
                 document.getElementById('news-pagination').style.display = 'none';
             }
             
-            let idFrom = entriesPerPage*(pageId-1);
-            let idTo = Math.min(newsList.length-1,entriesPerPage*pageId - 1);
-            for(let i=idFrom;i<idTo+1;i++){
+            let idFrom = entriesPerPage*(pageId - 1);
+            let idTo = Math.min(newsList.length - 1, entriesPerPage*pageId - 1);
+            for(let i=idFrom; i<idTo+1; i++){
                 let news = newsList[i];
                 let newsId = setting.createNewsId(news);
                 let newsDate = String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2);
 
                 let newsBlock = document.createElement('li');
-                    newsBlock.setAttribute('class', 'main-news__list-item');
+                    newsBlock.classList.add('main-news__list-item');
                 let label = document.createElement('div');
-                    label.setAttribute('class', 'main-news__list-item__label label-' + news.label);
+                    label.classList.add('main-news__list-item__label', 'label-' + news.label);
                     label.textContent = labelList[news.label];
                 newsBlock.append(label);
                 let link = document.createElement('a');
-                    link.setAttribute('class', 'main-news__list-item__link');
+                    link.classList.add('main-news__list-item__link');
                     link.setAttribute('href', newsId);
                 newsBlock.append(link);
                 let date = document.createElement('div');
-                    date.setAttribute('class', 'main-news__list-item__caption__date');
                     date.textContent = newsDate;
                 let title = document.createElement('div');
-                    title.setAttribute('class', 'main-news__list-item__caption__title');
                     title.textContent = news.title;
                 
                 if(news.img){
-                    newsBlock.setAttribute('class', 'with-image');
+                    newsBlock.classList.add('with-image');
                     let caption = document.createElement('div');
-                        caption.setAttribute('class', 'main-news__list-item__caption');
+                        caption.classList.add('main-news__list-item__caption');
+                    date.classList.add('main-news__list-item__caption__date');
                     caption.append(date);
+                    title.classList.add('main-news__list-item__caption__title');
                     caption.append(title);
                     newsBlock.append(caption);
                     let imgWrapper = document.createElement('div');
-                        imgWrapper.setAttribute('class', 'main-news__list-item__img');
+                        imgWrapper.classList.add('main-news__list-item__img');
                     let img = document.createElement('img');
                         img.setAttribute('src', '../assets/image/news/' + newsId + '/0.jpg');
                         img.setAttribute('alt', news.title);
                     imgWrapper.append(img);
                     newsBlock.append(imgWrapper);
                     let cover = document.createElement('div');
-                        cover.setAttribute('class', 'main-news__list-item__cover');
+                        cover.classList.add('main-news__list-item__cover');
                     newsBlock.append(cover);
-                    
-
-                    // newsDOM = "<li class='main-news__list-item with-image'>"
-                    //             + "<div class='main-news__list-item__label " + "label-" + news.label +"'>" + labelList[news.label] + "</div>"
-                    //             + "<div class='main-news__list-item__caption'>"
-                    //                 + "<div class='main-news__list-item__caption__date'>" + newsDate + "</div>"
-                    //                 + "<div class='main-news__list-item__caption__title'>" + news.title + "</div>"
-                    //             + "</div>"
-                    //             + "<div class='main-news__list-item__img'>" 
-                    //                 + "<img class='lozad' src='../assets/image/news/" + newsId + "/0.jpg' alt='" + news.title + "'></div>"
-                    //             + "</div>"
-                    //             + "<a class='main-news__list-item__link' href='" + newsId + "'></a>"
-                    //             + "<div class='main-news__list-item__cover'></div>"
-                    //             + "</li>"
                 }else{
-                    newsBlock.setAttribute('class', 'no-image');
-                    newsBlock.append(label);
+                    newsBlock.classList.add('no-image');
+                    date.classList.add('main-news__list-item__date');
                     newsBlock.append(date);
-                    // newsDOM = "<li class='main-news__list-item no-image'>"
-                    //             + "<div class='main-news__list-item__label " + "label-" + news.label +"'>" + labelList[news.label] + "</div>"
-                    //             + "<div class='main-news__list-item__date'>" + newsDate + "</div>"
-                    //             + "<div class='main-news__list-item__title'>" + news.title + "</div>"
-                    //             + "<a class='main-news__list-item__link' href='" + newsId + "'></a>"
-                    //             + "</li>"
+                    title.classList.add('main-news__list-item__title');
+                    newsBlock.append(title);
                 }
                 document.getElementById('main-news__list').append(newsBlock);
             }
