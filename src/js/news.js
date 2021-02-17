@@ -27,13 +27,18 @@ window.onload = async ()=>{
         document.getElementById("news-category__list").append(li);
     }
 
-    if(document.querySelectorAll('.news-img-list')){
-        new Swiper('.news-img-list', {
+    if(document.getElementById('news-img-list')){
+        new Swiper('#news-img-list', {
             preloadImages: false,
             lazy: {
                 loadPrevNext: true,
             }
         });
+        
+        let listItem = document.querySelectorAll('news-img-list-item');
+        for(let i=0; i < listItem.length; i++){
+            listItem[i].style.width = '100%';
+        }
     }
 
     let queries = getQueries(location.search.slice(1));
@@ -132,7 +137,6 @@ window.onload = async ()=>{
                 let link = document.createElement('a');
                     link.classList.add('news-list-item__link');
                     link.setAttribute('href', newsId);
-                newsBlock.append(link);
                 let date = document.createElement('div');
                     date.textContent = newsDate;
                 let title = document.createElement('div');
@@ -146,6 +150,7 @@ window.onload = async ()=>{
                     caption.append(date);
                     title.classList.add('news-list-item__caption__title');
                     caption.append(title);
+                    caption.append(link);
                     newsBlock.append(caption);
                     let imgWrapper = document.createElement('div');
                         imgWrapper.classList.add('news-list-item__img');
@@ -158,6 +163,7 @@ window.onload = async ()=>{
                         cover.classList.add('news-list-item__cover');
                     newsBlock.append(cover);
                 }else{
+                    newsBlock.append(link);
                     newsBlock.classList.add('no-image');
                     date.classList.add('news-list-item__date');
                     newsBlock.append(date);

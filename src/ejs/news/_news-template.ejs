@@ -20,55 +20,62 @@
     ogImgURL: ogImgURL,
     twitterCardType: twitterCardType,
 }); -%>
-    <main id="main" class="news-article">
-        <div class="news-heading heading-1">
+    <main id="main" class="news-article news-page-no-top">
+        <div id="news-heading" class="heading-1">
             <div class="news-heading__date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
             <div class="news-heading__label label-<%= news.label %>"><%= labelList[news.label] %></div>
             <h2 class="news-heading__title"><%- news.title %></h2>
         </div>
 
-        <article class="text-block">
-            <% let newsTextList = news.content.text; -%>
-            <% for(let i=0;i<newsTextList.length;i++){ -%>
-                <p class="text-normal"><%- newsTextList[i] %></p>
-            <% } -%>
+        <div id="news-top-wrapper">
+            <article id="news-content" class="text-block">
+                <% let newsTextList = news.content.text; -%>
+                <% for(let i=0;i<newsTextList.length;i++){ -%>
+                    <p class="text-normal"><%- newsTextList[i] %></p>
+                <% } -%>
 
-            <% if(news.img){ %>
-                <ul class="news-img-list">
-                    <div class="swiper-wrapper">
-                    <% let newsId = String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>
-                    <% for(let i=0;i<(news.content.imgNum);i++){ %>
-                        <li class="main-news__img-list-item swiper-slide"><img src="../assets/image/news/<%= newsId %>/<%= String(i) %>.jpg" alt=""></li>
-                    <% } %>
+                <% if(news.img){ %>
+                    <ul id="news-img-list">
+                        <div class="swiper-wrapper">
+                        <% let newsId = String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>
+                        <% for(let i=0;i<(news.content.imgNum);i++){ %>
+                            <li class="news-img-list-item swiper-slide"><img src="../assets/image/news/<%= newsId %>/<%= String(i) %>.jpg" alt=""></li>
+                        <% } %>
+                        </div>
+                    </ul>
+                <% } %>
+            </article>
+
+            <div id="news-control">
+                <div id="news-pagetransfer">
+                <% if(next){ -%>
+                    <div class="news-pagetransfer__element news-pagetransfer__next">
+                        <p class="news-pagetransfer__text news-pagetransfer__next-text">次の投稿</p>
+                        <p class="news-pagetransfer__title news-pagetransfer__next-title"><%= next.title %></p>
+                        <a href="<%= String(next.year) + "-" + String(next.month) + "-" + String(next.day) + "_" + next.name %>.html"></a>
                     </div>
-                </ul>
-            <% } %>
-        </article>
-
-        <div class="text-block">
-            <div class="news-pagetransfer">
-            <% if(next){ -%>
-                <div class="news-pagetransfer__element news-pagetransfer__next">
-                    <p class="news-pagetransfer__text news-pagetransfer__next-text">次の投稿</p>
-                    <p class="news-pagetransfer__title news-pagetransfer__next-title"><%= next.title %></p>
-                    <a href="<%= String(next.year) + "-" + String(next.month) + "-" + String(next.day) + "_" + next.name %>.html"></a>
+                <% }else{ -%>
+                    <div class="news-pagetransfer__element" style="visibility: hidden;"></div>
+                <% } -%>
+                <div class="news-pagetransfer__partition"></div>
+                <% if(prev){ -%>    
+                    <div class="news-pagetransfer__element news-pagetransfer__prev">
+                        <p class="news-pagetransfer__text news-pagetransfer__prev-text">前の投稿</p>
+                        <p class="news-pagetransfer__title news-pagetransfer__prev-title"><%= prev.title %></p>
+                        <a href="<%= String(prev.year) + "-" + String(prev.month) + "-" + String(prev.day) + "_" + prev.name %>.html"></a>
+                    </div>
+                <% }else{ -%>
+                    <div class="news-pagetransfer__element" style="visibility: hidden;"></div>
+                <% } -%>
                 </div>
-            <% } -%>
-            <% if(prev){ -%>    
-                <div class="news-pagetransfer__element news-pagetransfer__prev">
-                    <p class="news-pagetransfer__text news-pagetransfer__prev-text">前の投稿</p>
-                    <p class="news-pagetransfer__title news-pagetransfer__prev-title"><%= prev.title %></p>
-                    <a href="<%= String(prev.year) + "-" + String(prev.month) + "-" + String(prev.day) + "_" + prev.name %>.html"></a>
-                </div>
-            <% } -%>
-                <div class="news-back">お知らせ一覧に戻る<a href="./"></a></div>
+                <div id="back-to-top">お知らせ一覧に戻る<a href="./"></a></div>
             </div>
-        </div>
-        
-        <div id="news-category">
-            <h3 id="news-category__title">カテゴリー別</h3>
-            <ul id="news-category__list">
-            </ul>
+            
+            <div id="news-category">
+                <h3 id="news-category__title" class="heading-2">カテゴリー別</h3>
+                <ul id="news-category__list">
+                </ul>
+            </div>
         </div>
         
     </main>

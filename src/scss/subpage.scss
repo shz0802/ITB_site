@@ -307,6 +307,8 @@ $text-normal-line-height: 2;
     &:first-of-type{
         margin-top: 3rem;
     }
+    text-align: justify;
+    text-justify: inter-ideograph;
 }
 
 .heading-2{
@@ -316,6 +318,8 @@ $text-normal-line-height: 2;
     width: $text-content-width;
     margin: 1rem auto;
     border-bottom: 1px solid rgba($base-black, 0.4);
+    text-align: justify;
+    text-justify: inter-ideograph;
 }
 p.text-normal{
     line-height: $text-normal-line-height;
@@ -323,6 +327,8 @@ p.text-normal{
     color: $text-color-black;
     margin-bottom: 1.5rem;
     text-align: left;
+    text-align: justify;
+    text-justify: inter-ideograph;
 }
 span.highlight{
     font-weight: 700;
