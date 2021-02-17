@@ -2,7 +2,7 @@
 import Swiper from 'swiper';
 import 'style-loader!css-loader!swiper/css/swiper.css';
 
-const entriesPerPage = 4 //9;
+const entriesPerPage = 9;
 
 const getQueries = (str)=>{
     let queries = {};
@@ -124,13 +124,13 @@ window.onload = async ()=>{
                 let newsDate = String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2);
 
                 let newsBlock = document.createElement('li');
-                    newsBlock.classList.add('main-news__list-item');
+                    newsBlock.classList.add('news-list-item');
                 let label = document.createElement('div');
-                    label.classList.add('main-news__list-item__label', 'label-' + news.label);
+                    label.classList.add('news-list-item__label', 'label-' + news.label);
                     label.textContent = labelList[news.label];
                 newsBlock.append(label);
                 let link = document.createElement('a');
-                    link.classList.add('main-news__list-item__link');
+                    link.classList.add('news-list-item__link');
                     link.setAttribute('href', newsId);
                 newsBlock.append(link);
                 let date = document.createElement('div');
@@ -141,30 +141,30 @@ window.onload = async ()=>{
                 if(news.img){
                     newsBlock.classList.add('with-image');
                     let caption = document.createElement('div');
-                        caption.classList.add('main-news__list-item__caption');
-                    date.classList.add('main-news__list-item__caption__date');
+                        caption.classList.add('news-list-item__caption');
+                    date.classList.add('news-list-item__caption__date');
                     caption.append(date);
-                    title.classList.add('main-news__list-item__caption__title');
+                    title.classList.add('news-list-item__caption__title');
                     caption.append(title);
                     newsBlock.append(caption);
                     let imgWrapper = document.createElement('div');
-                        imgWrapper.classList.add('main-news__list-item__img');
+                        imgWrapper.classList.add('news-list-item__img');
                     let img = document.createElement('img');
                         img.setAttribute('src', '../assets/image/news/' + newsId + '/0.jpg');
                         img.setAttribute('alt', news.title);
                     imgWrapper.append(img);
                     newsBlock.append(imgWrapper);
                     let cover = document.createElement('div');
-                        cover.classList.add('main-news__list-item__cover');
+                        cover.classList.add('news-list-item__cover');
                     newsBlock.append(cover);
                 }else{
                     newsBlock.classList.add('no-image');
-                    date.classList.add('main-news__list-item__date');
+                    date.classList.add('news-list-item__date');
                     newsBlock.append(date);
-                    title.classList.add('main-news__list-item__title');
+                    title.classList.add('news-list-item__title');
                     newsBlock.append(title);
                 }
-                document.getElementById('main-news__list').append(newsBlock);
+                document.getElementById('news-list').append(newsBlock);
             }
         }else{
             console.log(res.status);
