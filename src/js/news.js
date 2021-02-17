@@ -18,14 +18,13 @@ window.onload = async ()=>{
     //create category tab
     let labelList = setting.newsLabel;
     for (let label in labelList) {
-
-        let labelDOM = document.createElement('li');
-        labelDOM.classList.add('news-category__list-item');
+        let li = document.createElement('li');
+        li.classList.add('news-category__list-item');
         let link = document.createElement('a');
         link.setAttribute('href', './?filter='+ label);
-        link.textContent = labelList[label];
-        labelDOM.append(link);
-        document.getElementById("news-category__list").append(labelDOM);
+        li.textContent = labelList[label];
+        li.append(link);
+        document.getElementById("news-category__list").append(li);
     }
 
     if(document.querySelectorAll('.news-img-list')){
@@ -57,7 +56,7 @@ window.onload = async ()=>{
                     document.getElementById('news-page__title').textContent = 'カテゴリー：' + labelList[filter];
                 }
             }else{
-                document.getElementById('news-back-ontop').style.display = 'none';
+                document.getElementById('back-to-top').style.display = 'none';
             }
 
             //最大ページ数を超えていたらid=1に飛ばす

@@ -10,7 +10,7 @@
     ogImgURL: "https://utbenron.com/assets/image/news.jpg", //変更予定
     twitterCardType: "summary"
 }); -%>
-    <main id="main" class="main-news">
+    <main id="main">
         <div id="subpage-top">
             <div id="subpage-top__title">
                 <h2 id="subpage-top__title-text">お知らせ</h2>
@@ -18,21 +18,26 @@
             <img id="subpage-top__img" src="../assets/image/news.jpg" alt="">
             <div id="subpage-top__down">scroll</div>
         </div>
+
         <h3 class="heading-1" id="news-page__title">お知らせ一覧</h3>
-        <div class="text-block">
+
+        <div id="news-top-wrapper">
             <ul id="main-news__list"></ul>
-            <div id="news-pagination">
-                <div id="news-pagination__list-container">
-                    <ul id="news-pagination__list"></ul>
+
+            <div id="news-control">
+                <div id="news-pagination">
+                    <div id="news-pagination__list-container">
+                        <ul id="news-pagination__list"></ul>
+                    </div>
                 </div>
+                <div id="back-to-top">お知らせ一覧に戻る<a href="./"></a></div>
+            </div>
+
+            <div id="news-category">
+                <h3 id="news-category__title" class="heading-2">カテゴリー別</h3>
+                <ul id="news-category__list">
+                </ul>
             </div>
         </div>
-        <div id="news-back-ontop">お知らせ一覧に戻る<a href="./"></a></div>
-        <div id="news-category">
-            <h3 id="news-category__title">カテゴリー別</h3>
-            <ul id="news-category__list">
-            </ul>
-        </div>
-        
     </main>
 <%- include("../component/_footer",{id:"news",depth: 1}) %>
