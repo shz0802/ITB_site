@@ -81,6 +81,7 @@ window.onload = async ()=>{
                     }else{
                         let link = document.createElement('a');
                         link.setAttribute('href', '?page=' + String(i));
+                        link.textContent = String(i);
                         paginationDOM.append(link);
                     }
                     document.getElementById('news-pagination__list').append(paginationDOM);
@@ -89,23 +90,27 @@ window.onload = async ()=>{
                 // $(".news-pagination__list").scrollLeft($(".news-pagination__list-item").width()*(pageId-1));
 
                 //pagination next/prev作る
-                let newsPaginationDOM = document.createElement('div');
-                newsPaginationDOM.classList.add('news-pagination__text');
-                let p = document.createElement('p');
-                let link = document.createElement('a');
-                if(pageId!=1){    
+                if(pageId!=1){
+                    let newsPagination = document.createElement('div');
+                        newsPagination.classList.add('news-pagination__next');
+                    let p = document.createElement('p');
+                    let link = document.createElement('a');
                     p.textContent = '次へ';
-                    newsPaginationDOM.append(p);
+                    newsPagination.append(p);
                     link.setAttribute('href', '?page=' + String(pageId-1))
-                    newsPaginationDOM.append(link);
-                    document.getElementById('news-pagination').append(newsPaginationDOM);
+                    newsPagination.append(link);
+                    document.getElementById('news-pagination').append(newsPagination);
                 }
                 if(pageId!=maxPageNum){
+                    let newsPagination = document.createElement('div');
+                        newsPagination.classList.add('news-pagination__prev');
+                    let p = document.createElement('p');
+                    let link = document.createElement('a');
                     p.textContent = '前へ';
-                    newsPaginationDOM.append(p);
+                    newsPagination.append(p);
                     link.setAttribute('href', '?page=' + String(pageId+1))
-                    newsPaginationDOM.append(link);
-                    document.getElementById('news-pagination').append(newsPaginationDOM);
+                    newsPagination.append(link);
+                    document.getElementById('news-pagination').append(newsPagination);
                 }
             }else{
                 document.getElementById('news-pagination').style.display = 'none';
