@@ -9,17 +9,19 @@ window.onload = ()=>{
     /*--- set drawer for smartphone ---*/
     setDrawer();
 
-    document.getElementById('subpage-top__title').classList.add('is-called');
-    document.getElementById('subpage-top__title-text').classList.add('is-called');
-    document.getElementById('subpage-top__down').classList.add('is-called');
-    document.getElementById('subpage-top__down').addEventListener(setting.bindTouchStart, ()=>{
-        let rectTop = document.getElementById('subpage-top').getBoundingClientRect().bottom;
-        let offsetTop = window.pageYOffset;
-        let buffer = window.innerWidth*0.15 - 10;
-        let top = rectTop + offsetTop;
-        window.scrollTo({
-            top,
-            behavior: 'smooth'
+    if(document.getElementById('subpage-top__title')){
+        document.getElementById('subpage-top__title').classList.add('is-called');
+        document.getElementById('subpage-top__title-text').classList.add('is-called');
+        document.getElementById('subpage-top__down').classList.add('is-called');
+        document.getElementById('subpage-top__down').addEventListener(setting.bindTouchStart, ()=>{
+            let rectTop = document.getElementById('subpage-top').getBoundingClientRect().bottom;
+            let offsetTop = window.pageYOffset;
+            // let buffer = window.innerWidth*0.15 - 10;
+            let top = rectTop + offsetTop;
+            window.scrollTo({
+                top,
+                behavior: 'smooth'
+            });
         });
-    });
+    }
 }

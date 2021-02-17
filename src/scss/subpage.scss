@@ -257,290 +257,154 @@
     }
 }
 
-.main-lev1{
+$text-content-width: 87.5%;
+$text-color-black: #444;
+$text-normal-line-height: 2;
+
+.text-block{
     position: relative;
-    margin: 10vw auto 12.5vw;
-    width: 90%;
-    &.no-title{
-        margin-bottom: 0;
-        @include mq(lg){
-            margin-bottom: 2.5vw;
-        }
+    margin: 0 auto 3rem;
+    width: $text-content-width;
+    img.img-in-block{
+        margin-top: 1rem;
+        width: 100%;
     }
     @include mq(lg){
-        width: 92.5%;
-        margin-top: 0;
-        margin-bottom: 5vw;
-        margin-left: 2.5vw;
+        &.text-block__with-img{
+            display: flex;
+            margin-top: - 1rem;
+            justify-content: space-between;
+            .text-content-wrapper{width: 67.5%;}
+            img.img-in-block{width: 30%;}
+        }   
     }
-    .is-emphasized{
-        font-weight: 600;
-        padding: 0 0.5vw 0;
-        background: linear-gradient(transparent 65%, rgba($base-color,0.6) 65%);
+}
+
+.heading-1{
+    font-size: 1.75rem;
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 0.4rem 0;
+
+    position: relative;
+    margin: 5rem auto 0;
+    width: $text-content-width;
+    border-bottom: 3px solid $base-color;
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        border-bottom: solid 3px $base-black;
+        left: 0;
+        bottom: -3px;
+        width: 20%;
     }
-    .main-img{
-        margin: 5vw 0 0;
-        width: 100%;
+
+    &.no-top{
+        margin-top: 7rem;
     }
-    .main-lev1__header{
+
+    &:first-of-type{
+        margin-top: 3rem;
+    }
+}
+
+.heading-2{
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 2;
+    width: $text-content-width;
+    margin: 1rem auto;
+    border-bottom: 1px solid rgba($base-black, 0.4);
+}
+p.text-normal{
+    line-height: $text-normal-line-height;
+    font-size: 1rem;
+    color: $text-color-black;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+span.highlight{
+    font-weight: 700;
+    padding: 0 .1rem 0;
+    margin: 0 .1rem 10;
+    background: linear-gradient(transparent 77.5%, rgba($base-color,0.6) 65%);
+}
+a.text-link{
+    $text-link-line-height: 1.5;
+    display: inline;
+    line-height: $text-link-line-height;
+    border-bottom: 1px solid $base-color;
+    text-decoration: none;
+    position: relative;
+    margin: 0 .1rem;
+    &:after{
+        content: "";
+        display: inline-block;
+        margin-left: .3rem;
+        width: 1rem * $text-link-line-height * 0.7;
+        height: 1rem * $text-link-line-height * 0.7;
+        mask: url(../image/icon/link-variant.png) center center / 100% 100% no-repeat;
+        background-color: $base-color;
+    }
+    &:link{color: $base-color;}
+    &:active,a:focus{text-decoration: none;}
+    &:visited{
+        text-decoration: none;
+        color: $visited-link-color;
+        border-color: $visited-link-color;
+        &:after{background-color: $visited-link-color;}
+    }
+
+    &.is-emphasized{
+        margin: 0 auto;
+        font-size: 1.2rem;
+    }
+}
+
+ul.list-in-block{
+    padding: 1rem 0;
+    width: 100%;
+    border-left: 1px dashed rgba($base-color, 0.85);
+    padding-left: .5rem;
+    overflow-x: auto;
+    li{
+        $list-font-size: .9rem;
+        $list-line-height: 2;
+        $list-style-circle-size: 0.25;
+        font-size: $list-font-size;
+        color: $text-color-black;
+        line-height: $list-line-height;
+        white-space: nowrap;
+        margin-bottom: 1rem;
+
         position: relative;
-        margin: 0;
-        font-size: 6.5vw;
-        font-weight: bold;
-        padding: 0 3vw 0;
-        line-height: 2;
-        border-bottom: 3px solid $base-color;
-        @include mq(lg){
-            font-size: 2.5vw;
-            padding: 0 2.5vw 0;
-        }
-        &:after {
+        padding-left: $list-font-size * $list-line-height;
+        &:before{
             content: "";
-            display: block;
             position: absolute;
-            border-bottom: solid 3px $base-black;
-            left: 0;
-            bottom: -3px;
-            width: 20%;
+            top: $list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2;
+            left: $list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2;
+            width: $list-font-size * $list-line-height * $list-style-circle-size;
+            height: $list-font-size * $list-line-height * $list-style-circle-size;
+            background-color: rgba($base-color, 0.85);
+            border-radius: 50%;
         }
     }
-    .main-lev1__content{
-        position: relative;
+}
+
+div.google-slide-in-block{
+    width: 100%;
+    margin: 0 auto;
+    height: calc(95vw * 9 / 16);
+    iframe{
         width: 100%;
-        margin: 5vw 0 0;
-        padding: 0 3vw;
-        @include mq(lg){
-            margin: 2vw 0 0;
-            padding: 0 2.5vw;
-        }
-        &.main-lev1__content-google-slide{
-            width: 95vw;
-            margin-left: -2.5vw;
-            height: calc(95vw * 9 / 16);
-            iframe{
-                width: 100%;
-                height: 100%;
-            }
-            @include mq(lg){
-                width: 60vw;
-                margin-left: 15vw;
-                height: calc(60vw * 9 / 16);
-            }
-        }
-        &.main-lev1__content-google-document{
-            min-height: 50vw;
-            iframe{
-                width: 100%;
-                height: 200%;
-            }
-        }
-        p{
-            line-height: 1.8;
-            font-size: 3.8vw;
-            text-indent: 1em;
-            &.no-indent{text-indent: 0;}
-            margin: 0 0 4vw;
-            text-align: justify;
-            text-justify: inter-ideograph;
-            @include mq(lg){
-                margin-bottom: 1vw;
-                font-size: 1.3vw;
-                line-height: 2;
-            }
-        }
-        .main__more{
-            position: relative;
-            font-weight: 600;
-            color: $base-color;
-            border: 2px solid $base-color;
-            text-align: center;
-            width: 90%;
-            font-size: 4vw;
-            line-height: 12vw;
-            margin: 6vw auto 0;
-            @include mq(lg){
-                width: 35%;
-                font-size: 1.3vw;
-                line-height: 5vw;
-                margin: 2.5vw auto 0;
-            }
-            a{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                :active{background-color: rgba($base-color, 0.2);}
-            }
-        }
-        .main__list{
-            position: relative;
-            width: 90%;
-            margin: 5vw auto 5vw;
-            padding: 2.5vw 0;
-            border-top: 2px solid $base-color;
-            border-bottom: 2px solid $base-color;
-            @include mq(lg){
-                width: 70%;
-                margin: 2.5vw auto;
-                padding: 1vw 0;
-            }
-            .main__list-item{
-                position: relative;
-                width: 100%;
-                font-size: 3.8vw;
-                line-height: 2.5;
-                padding-left: 6vw;
-                &:before{
-                    content: "・";
-                    position: absolute;
-                    top: 0;
-                    left: 2vw;
-                }
-                @include mq(lg){
-                    font-size: 1.3vw;
-                    line-height: 2.5;
-                    padding-left: 3.5vw;
-                }
-            }
-            .main__iframe{
-                width: 100%;
-            }
-        }
-
-        @import "form";
-        &.contact-form-wrapper{
-            overflow: hidden;
-        }
+        height: 100%;
     }
-
-    .main-lev2{
-        width: 100%;
-        margin: 0 0 10vw;
-        @include mq(lg){
-            margin: 0 0 4vw;
-        }
-        &.with-img{
-            @include mq(lg){
-                .main-lev2__content{
-                    display: flex;
-                    .main-lev2__content__wrapper{
-                        width: 70%;
-                    }
-                    .main-img{
-                        width: 30%;
-                        margin: -1.5vw 0 0 2.5vw;
-                    }
-                }
-            }
-        }
-        .main-lev2__header{
-            display: inline-block;
-            position: relative;
-            margin: 0;
-            &.in-text{margin-top: 5vw;}
-            font-size: 4.5vw;
-            line-height: 2;
-            padding: 0 2.5vw 0 7vw;
-            border-bottom: 2px dashed $base-color;
-            @include mq(lg){
-                font-size: 2vw;
-                margin-left: 0;
-                padding: 0 2vw 0 4vw;
-            }
-            &:before{
-                content:"▶";
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 1.5vw;
-                font-size: 3.5vw;
-                line-height: 9vw;
-                @include mq(lg){
-                    margin-top: 1.5vw;
-                    font-size: 1.3vw;
-                    line-height: 1vw;
-                }
-            }
-        }
-        .main-lev2__content{
-            width: 100%;
-            margin: 3vw 0 0;
-            @include mq(lg){
-                margin: 1.3vw 0 0;
-            }
-            p{
-                margin-bottom: 4vw;
-                @include mq(lg){
-                    margin-bottom: 1vw;
-                }
-            }
-
-            .main-lev3{
-                width: 100%;
-                margin: 7.5vw 0 10vw;
-                @include mq(lg){
-                    margin: 4vw 0 4vw;
-                }
-                .main-lev3__header{
-                    display: inline-block;
-                    font-size: 4vw;
-                    @include mq(lg){
-                        font-size: 1.8vw;
-                        margin-bottom: 1vw;
-                    }
-                    border-bottom: 1px solid #000;
-                    margin: 0 0 2.5vw;
-                    line-height: 1.5;
-                    padding: 0 1.5vw 0;
-                    &:before{
-                        display: inline-block;
-                        content: "・"
-                    }
-                }
-                .main-lev3__content{
-                    p{
-                        font-size: 3.6vw;
-                        margin-bottom: 2.5vw;
-                        @include mq(lg){
-                            font-size: 1.2vw;
-                            margin-bottom: 1vw;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    .main-contact__list{
-        padding: 0;
-        .main-contact__list-item{
-            position: relative;
-            height: 10vw;
-            @include mq(lg){
-                height: 4vw;
-            }
-            img{
-                position: absolute;
-                top: 2vw;
-                left: 0;
-                height: 6vw;
-                @include mq(lg){
-                    top: 1vw;
-                    height: 2vw;
-                }
-            }
-            p{
-                font-size: 4vw;
-                line-height: 10vw;
-                padding-left: 5vw;
-                @include mq(lg){
-                    font-size: 1.3vw;
-                    line-height: 4vw;
-                    padding-left: 2vw;
-                }
-            }
-        }
+    @include mq(lg){
+        width: 60vw;
+        margin-left: 15vw;
+        height: calc(60vw * 9 / 16);
     }
 }
 

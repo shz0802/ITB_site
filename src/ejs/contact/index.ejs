@@ -10,19 +10,19 @@
     twitterCardType: "summary"
 }); -%>
     <main id="main" class="no-top">
-        <div class="main-lev1">
-            <h3 class="main-lev1__header">お問い合わせ先</h3>
-            <div class="main-lev1__content">
-                <ul class="main-contact__list">
-                    <li class="main-contact__list-item"><img src="../assets/image/icon/email.png" alt="E-mail"><p>ichiko.todai.benronbu@gmail.com</p></li>
-                    <li class="main-contact__list-item"><img src="../assets/image/icon/twitter.png" alt="Twitter"><p><a href="https://twitter.com/Todai_Benronbu">公式Twitter(@Todai_Benronbu)</a></p></li>
-                    <li class="main-contact__list-item"><img src="../assets/image/icon/line.png" alt="LINE"><p><a href="https://lin.ee/3Z32rUC">2020年度公式LINEアカウント</a></p></li>
-                </ul>
-            </div>
+        <h3 class="heading-1">お問い合わせ先</h3>
+        <div class="text-block">
+            <p class="text-normal">東大弁論部にご用件のある方は、氏名・ご用件の内容などを明記の上、以下の連絡先にお問い合わせください。</p>
+            <ul class="list-in-block">
+                <li>mail: ichiko.todai.benronbu@gmail.com</li>
+                <li><a class="text-link" href="https://twitter.com/Todai_Benronbu">公式Twitter(@Todai_Benronbu)</a></li>
+                <li><a class="text-link" href="https://lin.ee/3Z32rUC">2020年度公式LINEアカウント</a></li>
+            </ul>
         </div>
-        <div class="main-lev1">
-            <h3 class="main-lev1__header">お問い合わせフォーム</h3>
-            <div class="main-lev1__content contact-form-wrapper">
+
+        <!-- <div class="text-block">
+            <h3 class="header-1">お問い合わせフォーム</h3>
+            <div class="contact-form-wrapper">
                 <form id="contact-form-input" class="contact-form">
                     <div class="contact-form-group">
                         <label class="contact-form-group__label">お名前</label>
@@ -41,7 +41,7 @@
                         <div class="error-message error-empty">入力がなされていません</div>
                         <div class="error-message error-invalid-confirmation">メールアドレスが一致していません</div>
                     </div>
-                    <!--
+                    
                     <div class="contact-form-group">
                         <label class="contact-form-group__label">ご用件</label>
                         <div class="contact-form-group__radio-group">
@@ -52,7 +52,7 @@
                             <input type="text" name="others" placeholder="ご用件をお書きください" class="contact-form-group__input-others">
                         </div>
                     </div>
-                    -->
+                   
                     <div class="contact-form-group" class="contact-form">
                         <label class="contact-form-group__label">お問い合わせ内容</label>
                         <textarea name="content" class="input" required></textarea>
@@ -79,6 +79,6 @@
                     <div class="contact-form__button" id="contact-form__submit" class="enabled">送信する</div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 <%- include("../component/_footer.ejs",{id:"contact",depth:1}) %>

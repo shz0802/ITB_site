@@ -21,27 +21,31 @@
     twitterCardType: twitterCardType,
 }); -%>
     <main id="main" class="news-article">
-        <div class="main-lev1">
-            <div class="main-lev1__header">
-                <div class="main-lev1__header-date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
-                <div class="main-lev1__header-label label-<%= news.label %>"><%= labelList[news.label] %></div>
-                <h2 class="main-lev1__header-text"><%- news.title %></h2>
-            </div>
-            <article class="main-lev1__content">
+        <div class="news-heading heading-1">
+            <div class="news-heading__date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
+            <div class="news-heading__label label-<%= news.label %>"><%= labelList[news.label] %></div>
+            <h2 class="news-heading__title"><%- news.title %></h2>
+        </div>
+
+        <article class="text-block">
             <% let newsTextList = news.content.text; -%>
             <% for(let i=0;i<newsTextList.length;i++){ -%>
-                <p><%- newsTextList[i] %></p>
+                <p class="text-normal"><%- newsTextList[i] %></p>
             <% } -%>
-            </article>
+
             <% if(news.img){ %>
-                <ul class="main-news__img-list slider">
+                <ul class="news-img-list">
+                    <div class="swiper-wrapper">
                     <% let newsId = String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>
                     <% for(let i=0;i<(news.content.imgNum);i++){ %>
-                        <li class="main-news__img-list-item slick-slide"><img src="../assets/image/news/<%= newsId %>/<%= String(i) %>.jpg" alt=""></li>
+                        <li class="main-news__img-list-item swiper-slide"><img src="../assets/image/news/<%= newsId %>/<%= String(i) %>.jpg" alt=""></li>
                     <% } %>
+                    </div>
                 </ul>
             <% } %>
+        </article>
 
+        <div class="text-block">
             <div class="news-pagetransfer">
             <% if(next){ -%>
                 <div class="news-pagetransfer__element news-pagetransfer__next">
@@ -60,7 +64,7 @@
                 <div class="news-back">お知らせ一覧に戻る<a href="./"></a></div>
             </div>
         </div>
-
+        
         <div class="news-category">
             <h3 class="news-category__title">カテゴリー別</h3>
             <ul class="news-category__list">

@@ -8,7 +8,7 @@
         flex-flow: wrap row;
         justify-content: flex-start;
         @include mq(lg){
-            margin-top: 1vw;
+            margin-top: 2.5vw;
         }
         .main-news__list-item{
             position: relative;
@@ -220,7 +220,6 @@
         }
     }
     
-    
     .news-pagination{
         position: relative;
         width: 100%;
@@ -389,13 +388,63 @@
     @include mq(lg){
         margin-bottom: 5vw;
     }
-    .main-lev1{
-        @include mq(lg){
-            margin-left: 2.5%;
-            margin-right: 2.5%;
-            width: 70%;
+    .news-heading{
+        padding-top: 0;
+        .news-heading__date{
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: 2;
+        }
+        .news-heading__label{
+            position: absolute;
+            top: .25rem;
+            right: 0;
+            font-size: .8rem;
+            font-weight: normal;
+            line-height: 1.75;
+            width: 25%;
+            border-radius: 1vw;
+            color: $base-white;
+            background-color: $base-color;
+            text-align: center;
+            z-index: 300;
+            &.label-management{background-color: $base-color;}
+            &.label-benron{background-color: $color-benron;}
+            &.label-debate{background-color: $color-debate;}
+            &.label-event{background-color: $color-event;}
+            &.label-others{background-color: $color-others;}
+            @include mq(lg){
+                left: 11vw;
+                font-size: 1vw;
+                margin-top: -.2vw;
+                line-height: 1.6vw;
+                width: 10%;
+                border-radius: .3vw;
+            }
+        }
+        .news-heading__title{
+            margin: 0;
+            font-size: 1.5rem;
         }
     }
+
+    .news-img-list{
+        position: relative;
+        padding: 0;
+        width: 100%;
+        margin: 4rem auto;
+        @include mq(lg){
+            width: 55%;
+        }
+        li{
+            width: 100%;
+            img{
+                margin-left: 5%;
+                width: 90%;
+            }
+        }
+    }
+    
     .news-back-ontop{
         width: 90%;
         margin: 0 5% 5vw;
@@ -501,15 +550,10 @@
 }
 
 #main.news-article{
-    margin-top: 25vw;
-    margin-bottom: 15vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    @include mq(lg){
-        margin-top: 12.5vw;
-        margin-bottom: 5vw;
-    }
+    overflow-x: hidden;
     .main-lev1{
         margin-top: 0;
         @include mq(lg){

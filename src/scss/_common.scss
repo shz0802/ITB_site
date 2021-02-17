@@ -13,6 +13,13 @@ html {
     &.wf-active {
         .first-view-letters{opacity: 1;}
     }
+    font-size: 4vw;
+    @include mq(md){
+        font-size: 2.5vw;
+    }
+    @include mq(lg){
+        font-size: 1.4vw;
+    }
 }
 
 ul{
@@ -21,11 +28,12 @@ ul{
 
 body{
     position: relative;
-    width: 100vw;
+    width: 100%;
     background-color: $base-bg-color;
     color: $base-black;
     overflow-x: hidden;
     font-family: 'Noto Sans CJK JP', 'Noto Sans JP', sans-serif;
+    font-feature-settings: palt;
     &::-webkit-scrollbar{width: 12px;}
     &::-webkit-scrollbar-track{
         background-color: rgba($base-black,0.1);
@@ -55,19 +63,6 @@ body{
             transform: translateX(-60vw);
         }
     }
-    a{
-        &:link{
-            color: $base-color;
-            text-decoration: underline;
-        }
-        &:active,a:focus{
-            text-decoration: underline;
-        }
-        &:visited{
-            color: darken($base-color,20%);
-            text-decoration: underline;
-        }
-    }
 }
 
 #main{
@@ -80,16 +75,9 @@ body{
         margin-top: $lg-nav-height;
     }
     &.no-top{
-        margin-top: 25vw;
-        margin-bottom: 15vw;
+        margin-top: $sp-nav-height * 1.5;
         @include mq(lg){
-            margin-top: 10vw;
-        }
-        .no-title{
-            margin-top: 30vw;
-            @include mq(lg){
-                margin-top: 12.5vw;
-            }
+            margin-top: $lg-nav-height * 1.5;
         }
     }
 }

@@ -2,11 +2,12 @@
 $base-color: #248bd1;
 $base-white: #fcfcfc;
 $base-black: darken($base-color,40%);
-$base-bg-color: desaturate(lighten($base-color, 48%), 20%);
+$base-bg-color: $base-white;//desaturate(lighten($base-color, 48%), 20%);
 $color-benron: #3eb370;
 $color-debate: #d3381c;
 $color-event: #f8b500;
 $color-others: #777;
+$visited-link-color: darken($base-color, 20%);
 
 $sp-nav-height: 17.5vw;
 $lg-nav-height: 7.5vw;
