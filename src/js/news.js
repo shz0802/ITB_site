@@ -2,7 +2,7 @@
 import Swiper from 'swiper';
 import 'style-loader!css-loader!swiper/css/swiper.css';
 
-const entriesPerPage = 9;
+const entriesPerPage = 4 //9;
 
 const getQueries = (str)=>{
     let queries = {};
@@ -86,7 +86,8 @@ window.onload = async ()=>{
                     document.getElementById('news-pagination__list').append(paginationDOM);
                 }
                 //scroll調整
-                // $(".news-pagination__list").scrollLeft($(".news-pagination__list-item").width()*(pageId-1));
+                let itemWidth = document.getElementsByClassName("news-pagination__list-item")[0].offsetWidth;
+                document.getElementById("news-pagination__list-container").scrollLeft = itemWidth*(pageId-1);
 
                 //pagination next/prev作る
                 if(pageId!=1){
