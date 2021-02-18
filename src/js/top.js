@@ -4,7 +4,7 @@ import 'style-loader!css-loader!swiper/css/swiper.css';
 import setDrawer from './components/drawer';
 import lozad from 'lozad';
 
-window.onload = ()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
     /*--- lazyload setting ---*/
     const observer = lozad();
     observer.observe();
@@ -100,7 +100,7 @@ window.onload = ()=>{
             childList: true
         });
     },2000);
-}
+});
 
 /*--- on resize ---*/
 let timeoutId;

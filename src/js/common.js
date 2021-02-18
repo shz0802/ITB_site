@@ -1,7 +1,7 @@
 ﻿import setting from './components/setting';
 import setDrawer from './components/drawer';
 
-window.onload = ()=>{
+document.addEventListener('DOMContentLoaded', ()=>{
     /*--- setting for custom vh ---*/
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -24,4 +24,4 @@ window.onload = ()=>{
             });
         });
     }
-}
+});

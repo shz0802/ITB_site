@@ -14,7 +14,7 @@ const getQueries = (str)=>{
     return queries;
 }
 
-window.onload = async ()=>{
+document.addEventListener('DOMContentLoaded', async ()=>{
     //create category tab
     let labelList = setting.newsLabel;
     for (let label in labelList) {
@@ -176,4 +176,4 @@ window.onload = async ()=>{
             console.log(res.status);
         };
     }
-};
+});
