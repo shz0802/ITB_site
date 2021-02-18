@@ -1,11 +1,3 @@
-// if the page doesn't have subpage-top
-#main.news-page-no-top{
-    margin-top: 7rem;
-    #subpage-top{
-        display: none;
-    }
-}
-
 #news-top-wrapper{
     width: 87.5%;
     margin: 0 auto;
@@ -262,6 +254,11 @@
         color: $base-black;
         // @include mq(lg){display: none;}
         a{@include fullSizeLink();}
+        @include mq(lg){
+            margin: 0 auto;
+            width: 80%;
+            font-size: 1.75vw;
+        }
     }
 
     //top page
@@ -440,14 +437,16 @@
         border-top: 1px solid rgba($base-black, 0.4);
         @include mq(lg){
             width: 80%;
-            margin: 7.5vw auto 0;
-            height: 13vw;
+            margin: 5vw auto 0;
         }
         .news-pagetransfer__partition{
             position: relative;
             width: 1px;
             height: 25vw;
             background-color: rgba($base-black, 0.4);
+            @include mq(lg){
+                height: 7.5vw;
+            }
         }
         .news-pagetransfer__element{
             position: relative;
@@ -467,9 +466,8 @@
                 text-align: center;
                 font-weight: 500;
                 @include mq(lg){
-                    font-size: 2vw;
-                    line-height: 4vw;
-                    padding: .5vw 0 0;
+                    top: 1vw;
+                    font-size: 1.75vw;
                 }
             }
             .news-pagetransfer__title{
@@ -484,11 +482,11 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 @include mq(lg){
-                    font-size: 1.3vw;
+                    font-size: 1.2vw;
                     line-height: 1;
                     padding: 0;
                     width: 75%;
-                    top: 4.75vw;
+                    top: 4vw;
                 }
             }
             &:after{
@@ -613,7 +611,7 @@
         @include mq(lg){
             margin-top: calc(3vw - 1em);
             margin-bottom: 0;
-            padding-right: 1vw;
+            padding-right: 3vw;
             grid-row: 1;
             grid-column: 1;
         }
@@ -644,9 +642,9 @@
             &.label-event{background-color: $color-event;}
             &.label-others{background-color: $color-others;}
             @include mq(lg){
-                left: 11vw;
+                left: 10vw;
                 font-size: 1vw;
-                margin-top: -.2vw;
+                top: .4rem;
                 line-height: 1.6vw;
                 width: 10%;
                 border-radius: .3vw;
@@ -665,6 +663,7 @@
         padding: 0;
         @include mq(lg){
             width: 55%;
+            margin-bottom: 3rem;
         }
         overflow: hidden;
         li{
@@ -677,114 +676,9 @@
     
 }
 
-// styles for each atricle page
-// #main.news-article{
-//     display: flex;
-//     flex-flow: row wrap;
-//     justify-content: flex-start;
-//     overflow-x: hidden;
-//     .main-lev1{
-//         margin-top: 0;
-//         @include mq(lg){
-//             margin: 0 2.5% 0;
-//             width: 70%;
-//         }
-//         .main-lev1__header{
-//             position: relative;
-//             width: 100%;
-//             .main-lev1__header-text{
-//                 margin: 0;
-//                 font-size: 4.75vw;
-//                 line-height: 1.5;
-//                 padding-bottom: 2vw;
-//                 font-weight: 600;
-//                 @include mq(lg){
-//                     font-size: 2vw;
-//                     padding-bottom: 1vw;
-//                 }
-//             }
-//             .main-lev1__header-date{
-//                 width: 100%;
-//                 margin: 0;
-//                 font-size: 3.75vw;
-//                 line-height: 2;
-//                 padding-bottom: 1vw;
-//                 @include mq(lg){
-//                     font-size: 1.3vw;
-//                     line-height: 1;
-//                     padding-bottom: 1vw;
-//                 }
-//             }
-//             .main-lev1__header-label{
-//                 position: absolute;
-//                 top: 0;
-//                 right: 3vw;
-//                 font-size: 3.25vw;
-//                 line-height: 1.75;
-//                 width: 25%;
-//                 border-radius: 1vw;
-//                 color: $base-white;
-//                 background-color: $base-color;
-//                 text-align: center;
-//                 z-index: 300;
-//                 &.label-management{background-color: $base-color;}
-//                 &.label-benron{background-color: $color-benron;}
-//                 &.label-debate{background-color: $color-debate;}
-//                 &.label-event{background-color: $color-event;}
-//                 &.label-others{background-color: $color-others;}
-//                 @include mq(lg){
-//                     left: 11vw;
-//                     font-size: 1vw;
-//                     margin-top: -.2vw;
-//                     line-height: 1.6vw;
-//                     width: 10%;
-//                     border-radius: .3vw;
-//                 }
-//             }
-//         }
-//         .main-news__img-list{
-//             position: relative;
-//             width: 100vw;
-//             height: 62.5vw;
-//             margin: 10vw -5vw 5vw;
-//             padding: 0;
-//             transition: .5s opacity linear;
-//             @include mq(lg){
-//                 margin: 4vw auto 4vw;
-//                 width: 100%;
-//                 height: 30vw;
-//             }
-//             .main-news__img-list-item{
-//                 position: relative;
-//                 width: 100%;
-//                 opacity: 0.6;
-//                 transition: .3s opacity ease-in-out;
-//                 outline:none;
-//                 img{
-//                     position: relative;
-//                     margin-left: 2.5%;
-//                     width: 95%;
-//                 }
-//             }
-//         }
-//     }
-    
-    
-    
-// }
-
-
-// #main.news-article{
-//     #news-category{
-//         @include mq(lg){
-//             margin-top: 0;
-//         }
-//     }
-// }
-// #main.main-news{
-//     #news-category{
-//         @include mq(lg){
-//             margin-top: 5vw;
-//         }
-//     }
-// }
+#main.news-page-no-top{
+    margin-top: 7rem;
+    #subpage-top{
+        display: none;
+    }
+}

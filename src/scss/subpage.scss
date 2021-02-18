@@ -276,7 +276,10 @@ $text-normal-line-height: 2;
             justify-content: space-between;
             .text-content-wrapper{width: 67.5%;}
             img.img-in-block{width: 30%;}
-        }   
+        }
+        &.no-heading{
+            margin-top: calc(10vw + 1rem);
+        }
     }
 }
 
