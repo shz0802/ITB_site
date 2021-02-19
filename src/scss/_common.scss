@@ -6,12 +6,12 @@
 }
 
 html {
-    .first-view-letters, p, h1, h2, h3, h4, h5{
-        transition: .5s opacity ease-in-out;
+    .first-view-letters, h1, h2, h3, h4, h5, div.text-block{
+        transition: .2s opacity ease-in-out;
         opacity: 0;
     }
     &.wf-active {
-        .first-view-letters, p, h1, h2, h3, h4, h5{opacity: 1;}
+        .first-view-letters, h1, h2, h3, h4, h5, div.text-block{opacity: 1;}
     }
     font-size: 4vw;
     @include mq(md){

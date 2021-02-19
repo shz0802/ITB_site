@@ -356,21 +356,26 @@ a.text-link{
     $text-link-line-height: 1.5;
     display: inline;
     line-height: $text-link-line-height;
-    border-bottom: 1px solid $base-color;
+    border-bottom: none;
     text-decoration: none;
     position: relative;
     margin: 0 .1rem;
-    &:after{
-        content: "";
-        display: inline-block;
-        margin-left: .3rem;
-        width: 1rem * $text-link-line-height * 0.7;
-        height: 1rem * $text-link-line-height * 0.7;
-        mask: url(../image/icon/link-variant.png) center center / 100% 100% no-repeat;
-        background-color: $base-color;
+    &[target=_blank]{
+        &:after{
+            content: "";
+            display: inline-block;
+            margin-left: .3rem;
+            margin-right: .2rem;
+            width: 1rem * $text-link-line-height * 0.6;
+            height: 1rem * $text-link-line-height * 0.6;
+            mask: url(../image/icon/link-external.png) center center / 100% 100% no-repeat;
+            background-color: $base-color;
+        }
     }
     &:link{color: $base-color;}
-    &:active,a:focus{text-decoration: none;}
+    &:active,&:hover{
+        border-bottom: 1.5px solid $base-color;
+    }
     &:visited{
         text-decoration: none;
         color: $visited-link-color;
