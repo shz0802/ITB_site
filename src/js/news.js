@@ -175,5 +175,22 @@ document.addEventListener('DOMContentLoaded', async ()=>{
         }else{
             console.log(res.status);
         };
+    }else{
+        // article page
+        let links = document.getElementById('news-content').querySelectorAll('a');
+        for(let i=0; i<links.length; i++){
+            let link = links[i];
+            link.classList.add('text-link');
+            if(link.getAttribute('href').indexOf('http') != -1){
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+
+        let highlightTexts = document.getElementById('news-content').querySelectorAll('[data-highlight]');
+        for(let i=0; i<highlightTexts.length; i++){
+            let text = highlightTexts[i];
+            text.classList.add('highlight');
+        }
     }
 });

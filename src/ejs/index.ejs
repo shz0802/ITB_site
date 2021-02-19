@@ -47,7 +47,7 @@
                 <li class="top-news__list-item">
                     <div class="top-news__list-item__date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
                     <div class="top-news__list-item__title">
-                        <a href="<%= String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>"><%= news.title %></a>
+                        <a class="text-link" href="/news/<%= String(news.year) + "-" + String(news.month) + "-" + String(news.day) + "_" + news.name %>"><%= news.title %></a>
                     </div>
                     <div class="top-news__list-item__label label-<%= news.label %>"><%= newsLabel[news.label] %></div>
                 </li>

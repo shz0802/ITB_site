@@ -24,4 +24,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
             });
         });
     }
+
+    let externalLinks = document.getElementById('main').querySelectorAll('[data-external]');
+    for(let i=0; i<externalLinks.length; i++){
+        let link = externalLinks[i];
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    }
 });

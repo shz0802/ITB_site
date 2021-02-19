@@ -352,42 +352,6 @@ span.highlight{
     margin: 0 .1rem 10;
     background: linear-gradient(transparent 77.5%, rgba($base-color,0.6) 65%);
 }
-a.text-link{
-    $text-link-line-height: 1.5;
-    display: inline;
-    line-height: $text-link-line-height;
-    border-bottom: none;
-    text-decoration: none;
-    position: relative;
-    margin: 0 .1rem;
-    &[target=_blank]{
-        &:after{
-            content: "";
-            display: inline-block;
-            margin-left: .3rem;
-            margin-right: .2rem;
-            width: 1rem * $text-link-line-height * 0.6;
-            height: 1rem * $text-link-line-height * 0.6;
-            mask: url(../image/icon/link-external.png) center center / 100% 100% no-repeat;
-            background-color: $base-color;
-        }
-    }
-    &:link{color: $base-color;}
-    &:active,&:hover{
-        border-bottom: 1.5px solid $base-color;
-    }
-    &:visited{
-        text-decoration: none;
-        color: $visited-link-color;
-        border-color: $visited-link-color;
-        &:after{background-color: $visited-link-color;}
-    }
-
-    &.is-emphasized{
-        margin: 0 auto;
-        font-size: 1.2rem;
-    }
-}
 
 ul.list-in-block{
     padding: 1rem 0;
