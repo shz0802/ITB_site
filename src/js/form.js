@@ -4,11 +4,11 @@ const validate = (obj)=>{
     let input = obj.value;
     if(!input.match(/[^\s　]/)){
         obj.classList.add('has-error');
-        // obj.siblings(".error-empty").show();
+        obj.nextElementSibling.style.display = 'block';
     }else{
-        // obj.siblings(".error-empty").hide();
+        obj.nextElementSibling.style.display = 'none';
 
-        switch (obj.getAttribute('name')){
+        switch(obj.getAttribute('name')){
             case 'name':
             case 'content':
                 obj.classList.remove('has-error');
@@ -16,19 +16,19 @@ const validate = (obj)=>{
             case 'mail':
                 if(!input.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
                     obj.classList.add('has-error');
-                    // obj.siblings(".error-invalid-mail").show();
+                    obj.nextElementSibling.nextElementSibling.style.display = 'block';
                 }else{
                     obj.classList.remove('has-error');
-                    // obj.siblings(".error-invalid-mail").hide();
+                    obj.nextElementSibling.nextElementSibling.style.display = 'none';
                 }
                 break;
             case 'mail-confirm':
                 if(input !== document.getElementById('contact-form-input__mail').value){
                     obj.classList.add('has-error');
-                    // obj.siblings(".error-invalid-confirmation").show();
+                    obj.nextElementSibling.nextElementSibling.style.display = 'block';
                 }else{
                     obj.classList.remove("has-error");
-                    // obj.siblings(".error-invalid-confirmation").hide();
+                    obj.nextElementSibling.nextElementSibling.style.display = 'none';
                 }
                 break;
         }
@@ -39,7 +39,7 @@ let inputElements = Array.from(document.getElementsByClassName('input'));
 let confirmButton = document.getElementById('contact-form__confirm');
 inputElements.map(input => {
     input.classList.add('untouched');
-    input.addEventListener('change', ()=>{
+    input.addEventListener('blur', ()=>{
         input.classList.remove('untouched');
         validate(input);
         
