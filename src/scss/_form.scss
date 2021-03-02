@@ -111,6 +111,7 @@ $color-danger: #e60033;
         border-radius: 1.5vw;
         border: none;
         margin: 10vw auto 0;
+        cursor: pointer;
         @include mq(lg){
             width: 20%;
             margin-top: 5vw;

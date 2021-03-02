@@ -1,104 +1,125 @@
-// import setting from './components/setting';
-// import $ from 'jquery';
+import setting from './components/setting';
 
-// const validate = (obj)=>{
-//     let input = obj.val();
-//     if(!input.match(/[^\s　]/)){
-//         obj.addClass("has-error");
-//         obj.siblings(".error-empty").show();
-//     }else{
-//         obj.siblings(".error-empty").hide();
+const validate = (obj)=>{
+    let input = obj.value;
+    if(!input.match(/[^\s　]/)){
+        obj.classList.add('has-error');
+        // obj.siblings(".error-empty").show();
+    }else{
+        // obj.siblings(".error-empty").hide();
 
-//         switch (obj.attr("name")){
-//             case "name":
-//             case "content":
-//                 obj.removeClass("has-error");
-//                 break;
-//             case "mail":
-//                 if(!input.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
-//                     obj.siblings(".error-invalid-mail").show();
-//                 }else{
-//                     obj.removeClass("has-error");
-//                     obj.siblings(".error-invalid-mail").hide();
-//                 }
-//                 break;
-//             case "mail-confirm":
-//                 if(input !== $("#mail").val()){
-//                     obj.siblings(".error-invalid-confirmation").show();
-//                 }else{
-//                     obj.removeClass("has-error");
-//                     obj.siblings(".error-invalid-confirmation").hide();
-//                 }
-//                 break;
-//         }
-//     }
-// }
+        switch (obj.getAttribute('name')){
+            case 'name':
+            case 'content':
+                obj.classList.remove('has-error');
+                break;
+            case 'mail':
+                if(!input.match(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)){
+                    obj.classList.add('has-error');
+                    // obj.siblings(".error-invalid-mail").show();
+                }else{
+                    obj.classList.remove('has-error');
+                    // obj.siblings(".error-invalid-mail").hide();
+                }
+                break;
+            case 'mail-confirm':
+                if(input !== document.getElementById('contact-form-input__mail').value){
+                    obj.classList.add('has-error');
+                    // obj.siblings(".error-invalid-confirmation").show();
+                }else{
+                    obj.classList.remove("has-error");
+                    // obj.siblings(".error-invalid-confirmation").hide();
+                }
+                break;
+        }
+    }
+}
 
-// $(".input").addClass("not-selected");
-// $(".input").on('blur', function(e) {
-//     e.preventDefault();
-//     $(this).removeClass("not-selected");
-//     validate($(this));
+let inputElements = Array.from(document.getElementsByClassName('input'));
+let confirmButton = document.getElementById('contact-form__confirm');
+inputElements.map(input => {
+    input.classList.add('untouched');
+    input.addEventListener('blur', (e)=>{
+        e.preventDefault();
+        input.classList.remove('untouched');
+        validate(input);
+        
+        if(inputElements.filter(input => input.classList.contains('has-error') || input.classList.contains('untouched')).length == 0){
+            confirmButton.classList.add('enabled');
+        }else{
+            confirmButton.classList.remove('enabled');
+        }
+    });
+});
 
-//     if($("#contact-form-input").find(".has-error").length==0&&$("#contact-form-input").find(".not-selected").length==0){
-//         $("#contact-form__confirm").addClass("enabled");
-//     }else{
-//         $("#contact-form__confirm").removeClass("enabled");
-//     }
-// });
+confirmButton.addEventListener(setting.bindTouchStart, ()=>{
+    if(confirmButton.classList.contains('enabled')){
+        inputElements.map(input => validate(input));
+        if(inputElements.filter(input => input.classList.contains('has-error')).length != 0){
+            confirmButton.classList.remove('enabled');
+        }
+    }
+});
 
+confirmButton.addEventListener(setting.bindTouchEnd, ()=>{
+    if(confirmButton.classList.contains('enabled')){
+        document.getElementById('contact-form-input').classList.add('confirm');
+        document.getElementById('contact-form-confirmation').classList.add('confirm');
+        document.getElementById('contact-form-confirmation__name').textContent = document.getElementById('contact-form-input__name').value;
+        document.getElementById('contact-form-confirmation__mail').textContent = document.getElementById('contact-form-input__mail').value;
+        let contentWithEOL = '';
+        let lines = document.getElementById('contact-form-input__content').value.replace(/\r\n|\r/g, '\n').split('\n');
+        for(let i=0; i<lines.length; i++){
+            contentWithEOL = contentWithEOL + lines[i] + '<br>';
+        }
+        document.getElementById('contact-form-confirmation__content').innerHTML = contentWithEOL;
+    }
+});
 
-// $(document).on(setting.bindTouchStart,"#contact-form__confirm.enabled",(e)=>{
-//     $(".input").each((_,element) => {
-//         validate($(element));
-//     });
-//     if($("#contact-form-input").find(".has-error").length!==0){
-//         $("#contact-form__confirm").removeClass("enabled");
-//     }
-// });
-// $(document).on(setting.bindTouchEnd,"#contact-form__confirm.enabled",(e)=>{
-//     $("#contact-form-input,#contact-form-confirmation").addClass("confirm");
-//     $("#contact-form-confirmation__name").html($(".input[name='name']").val());
-//     $("#contact-form-confirmation__mail").html($(".input[name='mail']").val());
-//     $("#contact-form-confirmation__content").html($(".input[name='content']").val());
-// });
+document.getElementById('contact-form__back').addEventListener(setting.bindTouchStart, ()=>{
+    document.getElementById('contact-form-input').classList.remove('confirm');
+    document.getElementById('contact-form-confirmation').classList.remove('confirm');
+});
 
-// $("#contact-form__back").on(setting.bindTouchStart, (e)=>{
-//     $("#contact-form-input,#contact-form-confirmation").removeClass("confirm");
-// });
-
-// $("#contact-form__submit").on(setting.bindTouchEnd, function(e){
-//     e.preventDefault();
-//     let now = new Date();
-//     let mailText = "<html>"
-//                     +"<head><meta charset='utf-8'></head>"
-//                     +"<body>"
-//                     +"<p>公式サイトのお問い合わせフォームから、新規のお問い合わせを受信しました。</p>"
-//                     +"<hr>"
-//                     +"<p>送信："+ String(now.getFullYear()) + "/" + String(now.getMonth()+1) + "/" + String(now.getDay()) +"</p>"
-//                     +"<p>氏名："+ $(".input[name='name']").val() +"</p>"
-//                     +"<p>連絡先："+ $(".input[name='mail']").val() +"</p>"
-//                     +"<p>本文：<br>"+ $(".input[name='content']").val() +"</p>"
-//                     +"</body></html>";
-//     console.log(mailText);
-//     $.ajax({
-//         type: "post",
-//         url: "mail.php",
-//         data: {
-//             text:mailText
-//         },
-//         crossDomain: false,
-//         dataType : "text",
-//         scriptCharset: 'utf-8'
-//     }).done(function(data){
-//         if(data=="succeed"){
-//             alert("お問い合わせフォームからメールを送信しました。");
-//             $("#contact-form-input,#contact-form-confirmation").removeClass("confirm");
-//             $(".input").val("");
-//         }else{
-//             alert("送信エラー");
-//         }
-//     }).fail(function(XMLHttpRequest, textStatus, errorThrown){
-//         console.log(errorThrown);
-//     });
-// });
+document.getElementById('contact-form__submit').addEventListener(setting.bindTouchEnd, (e)=>{
+    e.preventDefault();
+    let now = new Date();
+    let contentWithEOL = '';
+    let lines = document.getElementById('contact-form-input__content').value.replace(/\r\n|\r/g, '\n').split('\n');
+    for(let i=0; i<lines.length; i++){
+        contentWithEOL = contentWithEOL + lines[i] + '<br>';
+    }
+    let mailText = '<html>'
+                    +'<head><meta charset="utf-8"></head>'
+                    +'<body>'
+                    +'<p>公式サイトのお問い合わせフォームから、新規のお問い合わせを受信しました。</p>'
+                    +'<hr>'
+                    +'<p>[送信日時] ' + String(now.getFullYear()) + '/' + ('0' + String(now.getMonth()+1)).slice(-2) + '/' + ('0' + String(now.getDay())).slice(-2) + ' ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2) + '</p>'
+                    +'<p>[お名前] ' + document.getElementById('contact-form-input__name').value +'</p>'
+                    +'<p>[メールアドレス] ' + document.getElementById('contact-form-input__mail').value +'</p>'
+                    +'<p>[お問い合わせ内容]<br>' + contentWithEOL + '</p>'
+                    +'</body></html>';
+    let postData = new FormData;
+    postData.set('text', mailText);
+    
+    fetch('mail.php', {
+        method: 'POST',
+        body: postData
+    })
+    .then(res => {return res.text()})
+    .then(text => {
+        if(text == 'succeed'){
+            alert("お問い合わせフォームからメールを送信しました。");
+            document.getElementById('contact-form-input').classList.remove('confirm');
+            document.getElementById('contact-form-confirmation').classList.remove('confirm');
+            inputElements.map(input => input.value = '');
+        }else{
+            alert("送信エラー");
+            console.error(text);
+        }
+    })
+    .catch(error => {
+        alert("送信エラー");
+        console.error(error);
+    });
+});
