@@ -39,8 +39,7 @@ let inputElements = Array.from(document.getElementsByClassName('input'));
 let confirmButton = document.getElementById('contact-form__confirm');
 inputElements.map(input => {
     input.classList.add('untouched');
-    input.addEventListener('blur', (e)=>{
-        e.preventDefault();
+    input.addEventListener('change', ()=>{
         input.classList.remove('untouched');
         validate(input);
         
@@ -101,7 +100,7 @@ document.getElementById('contact-form__submit').addEventListener(setting.bindTou
                     +'</body></html>';
     let postData = new FormData;
     postData.set('text', mailText);
-    
+
     fetch('mail.php', {
         method: 'POST',
         body: postData
