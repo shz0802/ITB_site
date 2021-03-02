@@ -10,10 +10,6 @@ $color-danger: #e60033;
         font-size: 1rem;
         line-height: 1.5;
         margin-top: 1.5rem;
-        @include mq(lg){
-            font-size: 1.3vw;
-            margin-bottom: 2vw;
-        }
         .input{
             display: block;
             outline: none;
@@ -156,11 +152,6 @@ $color-danger: #e60033;
             margin-top: 0.5rem;
             padding: 0.75rem 1rem;
             overflow-y: scroll;
-            @include mq(lg){
-                height: 15vw;
-                margin-top: 1.3vw;
-                padding: 1vw;
-            }
         }
     }
 }
