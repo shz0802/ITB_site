@@ -1,7 +1,36 @@
 $color-danger: #e60033;
-.contact-form-wrapper{overflow: hidden;}
-.contact-form{
+
+.text-block{
+    overflow-x: hidden;
+}
+
+#contact-form-wrapper{
     position: relative;
+    overflow-x: hidden;
+}
+
+#contact-form-input{
+    position: relative;
+    transform: translateX(0);
+    &.confirm{
+        transform: translateX(-100vw);
+    }
+}
+
+#contact-form-confirmation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100vw);
+    &.confirm{
+        transform: translateX(0);
+    }
+    @include mq(lg){
+        width: 100%;
+    }
+}
+
+.contact-form{
     width: 100%;
     transition: .5s all ease-in-out;
     .contact-form-group{
@@ -154,25 +183,5 @@ $color-danger: #e60033;
             padding: 0.75rem 1rem;
             overflow-y: scroll;
         }
-    }
-}
-
-#contact-form-input{
-    transform: translateX(0);
-    &.confirm{
-        transform: translateX(-100vw);
-    }
-}
-
-#contact-form-confirmation{
-    position: absolute;
-    top:0;
-    left: 0;
-    transform: translateX(100vw);
-    &.confirm{
-        transform: translateX(0);
-    }
-    @include mq(lg){
-        width: 100%;
     }
 }
