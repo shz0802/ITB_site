@@ -10,6 +10,7 @@
     transition: .5s transform ease-in-out;
     box-shadow: 0 0 3px 3px rgba(0,0,0,0.2);
     opacity: 0.95;
+    &.transition-disabled{transition: 0s;}
     &.is-open{
         transform: translateX(-75vw);
         @include mq(md){
@@ -91,7 +92,11 @@
                 &:nth-of-type(#{$i}){top: 3vw*($i - 1) + 4.5vw;}
             }
         }
-        &.is-active{
+        &.transition-disabled{
+            transition: 0s;
+            span{transition: 0s;}
+        }
+        &.is-open{
             transform: rotate(360deg);
             transform-origin: 50% 50%;
             z-index: 9999;
@@ -113,7 +118,7 @@
 }
 
 #page-cover{
-    will-change: transform,opacity;
+    will-change: transform, opacity;
     position: fixed;
     top:0;
     left:0;
@@ -123,6 +128,7 @@
     opacity: 0;
     background-color: darken($base-color, 50%);
     transition: .5s all ease-in-out;
+    &.transition-disabled{transition: 0s; z-index: 0;}
     &.is-open{
         opacity: 0.65;
         z-index: 200;
@@ -158,6 +164,7 @@
         box-shadow: none;
         background-color: $base-color;
         z-index: 200;
+        &.transition-disabled{transition: 0s;}
         &.is-open{
             box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
             transform: translateX(-75vw);
@@ -193,6 +200,7 @@
         box-shadow: none;
         background-color: $base-color;
         z-index: 200;
+        &.transition-disabled{transition: 0s;}
         &.is-open{
             box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
             transform: translateX(-60vw);
