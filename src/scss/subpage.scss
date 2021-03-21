@@ -270,7 +270,7 @@ $text-normal-line-height: 2;
         width: 100%;
     }
     @include mq(lg){
-        margin-bottom: 2.5rem;
+        margin-bottom: 0;
         &.text-block__with-img{
             display: flex;
             margin-top: - 1rem;
@@ -292,6 +292,9 @@ $text-normal-line-height: 2;
 
     position: relative;
     margin: 5rem auto 0;
+    @include mq(lg){
+        margin: 4rem auto 2rem;
+    }
     width: $text-content-width;
     border-bottom: 3px solid $base-color;
     &:after {
@@ -321,6 +324,9 @@ $text-normal-line-height: 2;
     line-height: 2;
     width: $text-content-width;
     margin: 1rem auto;
+    @include mq(lg){
+        margin: 2rem auto 1rem;
+    }
     border-bottom: 1px solid rgba($base-black, 0.4);
     text-align: justify;
     text-justify: inter-ideograph;
@@ -342,6 +348,10 @@ p.text-normal{
     font-size: 1rem;
     color: $text-color-black;
     margin-bottom: 1.5rem;
+    @include mq(lg){
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
     text-align: left;
     text-align: justify;
     text-justify: inter-ideograph;
