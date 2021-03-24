@@ -207,6 +207,7 @@
             &.label-benron{background-color: rgba($color-benron,0.95);}
             &.label-debate{background-color: rgba($color-debate, 0.95);}
             &.label-event{background-color: rgba($color-event, 0.95);}
+            &.label-welcome{background-color: rgba($color-welcome, 0.95);}
             &.label-others{background-color: rgba($color-others, 0.95);}
             @include mq(lg){
                 top: 1.5vw;
@@ -640,6 +641,7 @@
             &.label-benron{background-color: $color-benron;}
             &.label-debate{background-color: $color-debate;}
             &.label-event{background-color: $color-event;}
+            &.label-welcome{background-color: $color-welcome;}
             &.label-others{background-color: $color-others;}
             @include mq(lg){
                 left: 10vw;

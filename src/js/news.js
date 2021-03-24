@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
             if(queries["filter"]){
                 let filter = queries["filter"];
                 //validation
-                if(filter=="management"||filter=="benron"||filter=="debate"||filter=="event"||filter=="others"){
+                if(filter=="management"||filter=="benron"||filter=="debate"||filter=="event"||filter=="welcome"||filter=="others"){
                     newsList = newsList.filter((news)=>{
                         return news["label"] == filter;
                     });

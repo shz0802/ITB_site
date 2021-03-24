@@ -42,7 +42,7 @@
             <ul class="top-news__list" id="top-news__list">
                 <%_ for(let i=0;i<topNewsList.length;i++){ 
                     let news = topNewsList[i];
-                    let newsLabel = {"management":"運営", "benron": "弁論", "debate": "ディベート", "event": "企画", "others": "その他"};
+                    let newsLabel = {"management":"運営", "benron": "弁論", "debate": "ディベート", "event": "企画", "welcome": "新歓", "others": "その他"};
                 -%>
                 <li class="top-news__list-item">
                     <div class="top-news__list-item__date"><%= String(news.year) + "/" + ("00"+String(news.month)).slice(-2) + "/" + ("00"+String(news.day)).slice(-2) %></div>
