@@ -265,8 +265,9 @@ $text-normal-line-height: 2;
     position: relative;
     margin: 0 auto 3rem;
     width: $text-content-width;
+    overflow: hidden;
     img.img-in-block{
-        margin-top: 1rem;
+        margin-top: .5rem;
         width: 100%;
     }
     @include mq(lg){
@@ -278,7 +279,10 @@ $text-normal-line-height: 2;
             .text-content-wrapper{width: 67.5%;}
             img.img-in-block{width: 30%;}
         }
-        &.no-heading{
+    }
+    &.no-heading{
+        margin-top: 3rem;
+        @include mq(lg){
             margin-top: calc(10vw + 1rem);
         }
     }
@@ -291,10 +295,7 @@ $text-normal-line-height: 2;
     padding: 0.4rem 0;
 
     position: relative;
-    margin: 5rem auto 0;
-    @include mq(lg){
-        margin: 4rem auto 2rem;
-    }
+    margin: 3rem auto 1rem;
     width: $text-content-width;
     border-bottom: 3px solid $base-color;
     &:after {
@@ -323,21 +324,19 @@ $text-normal-line-height: 2;
     font-weight: normal;
     line-height: 2;
     width: $text-content-width;
-    margin: 1rem auto;
-    @include mq(lg){
-        margin: 2rem auto 1rem;
-    }
+    margin: 1.5rem auto;
     border-bottom: 1px solid rgba($base-black, 0.4);
     text-align: justify;
     text-justify: inter-ideograph;
 }
 
 .heading-3{
-    display: inline-block;
+    //display: inline-block;
     font-size: 1.1rem;
     font-weight: normal;
     line-height: 1.75;
-    margin: 1rem auto 0 6.25%;
+    width: $text-content-width;
+    margin: 1.5rem auto;
     border-bottom: 1px dashed rgba($base-black, 0.4);
     text-align: justify;
     text-justify: inter-ideograph;
@@ -347,6 +346,7 @@ p.text-normal{
     line-height: $text-normal-line-height;
     font-size: 1rem;
     color: $text-color-black;
+    margin-top: 0;
     margin-bottom: 1.5rem;
     @include mq(lg){
         margin-top: 0;
@@ -364,14 +364,16 @@ span.highlight{
 }
 
 ul.list-in-block{
-    padding: 1rem 0;
+    position: relative;
     width: 100%;
-    border-left: 1px dashed rgba($base-color, 0.85);
-    padding: .25rem 0 .25rem .5rem;
+    border-left: 1px solid rgba($base-black, 0.4);
+    padding: .75rem .5rem .25rem .75rem;
+    margin-top: .5rem;
+    margin-bottom: 3rem;
     overflow-x: auto;
     $list-font-size: 0.9rem;
-    $list-line-height: 1.6;
-    $list-style-circle-size: 0.35;
+    $list-line-height: 1.75;
+    $list-style-circle-size: 0.3;
     li{
         font-size: $list-font-size;
         color: $text-color-black;
@@ -388,8 +390,22 @@ ul.list-in-block{
             left: $list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2;
             width: $list-font-size * $list-line-height * $list-style-circle-size;
             height: $list-font-size * $list-line-height * $list-style-circle-size;
-            background-color: rgba($base-color, 0.85);
+            background-color: rgba($base-black, 0.8);
             border-radius: 50%;
+        }
+    }
+    &.list-with-title{
+        padding-top: 3rem;
+        p.list-title{
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 1rem;
+            line-height: 2;
+            margin-top: 0;
+            padding-left: 1rem;
+            padding-right: 2rem;
+            border-bottom: 1px solid rgba($base-black, 0.4);
         }
     }
     ul.list-in-list{
@@ -397,7 +413,7 @@ ul.list-in-block{
         padding-left: 1rem;
         li:before{
             background-color: transparent;
-            border: 1.5px solid rgba($base-color, 0.85);
+            border: 1.5px solid rgba($base-black, 0.8);
             border-radius: 50%;
         }
     }
