@@ -1,0 +1,151 @@
+body {
+   font-family: "Arial";
+   font-size: 13px;
+   margin: 10px;
+}
+
+#main{
+   background-color: #FFFFFF;
+}
+
+#top{
+   border-top: 5px green solid;
+   border-left: 1px #BBBBBB solid;
+   border-right: 1px #BBBBBB solid;
+   background-color: #FA8072;
+   color: #555555;
+   font-size: 14px;
+   padding-left:10px;
+   line-height: 35px;
+}
+
+#sidebar {
+   width: 300px;
+   float: left;
+   font-size: 13px;
+}
+
+
+#sidebar .content {
+   padding-right:20px;
+}
+
+
+#content {
+   padding: 0;
+   margin-left: 300px;
+}
+
+#pankuzu {
+   border-left: 1px #BBBBBB solid;
+   border-right: 1px #BBBBBB solid;
+   border-bottom: 1px #BBBBBB solid;
+   clear: both;
+   padding: 10px;
+   background-color: #EEEEEE;
+}
+
+#footer {
+   clear: both;
+   padding: 10px;
+   font-size: 13px;
+
+}
+
+a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #000000;
+}
+
+a:hover {
+    color: #fabe00;
+    text-decoration: underline;
+}
+
+#content h2{
+   color: #000000;
+   padding-top: 8px;
+   padding-left: 6px;
+   height: 24px;
+   border: 2px #000000 solid;
+   font-size: 17px;
+}
+
+#content h3{
+   color: #000000;
+   padding: 5px;
+   font-size: 15px;
+   border-bottom: 1px #CCCCCC solid;
+   border-left: 4px #CCCCCC solid;
+}
+
+#sidebar h2{
+   border-bottom: 1px #BBBBBB solid;
+   color: #555555;
+   font-size: 13px;
+   padding-left: 5px;
+   line-height: 32px;
+}
+
+#header {
+   border-right: 1px #BBBBBB solid;
+   border-left: 1px #BBBBBB solid;
+   padding: 0;
+   font-size: 13px;
+   background-color: #CCCCCC;
+   height: 35px;
+}
+
+#header ul{
+   list-style: none;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+}
+
+#header ul li{
+   border-right: 1px #BBBBBB solid;
+   margin: 0;
+   padding: 0px;
+   float: left;
+   position: relative;
+}
+
+#header ul li a{
+   width: 120px;
+   display: block;
+   margin: 0;
+   padding: 5px;
+   float: left;
+   color: #000000;
+   line-height: 25px;
+   text-decoration: none;
+}
+
+#header ul li:hover{
+   background-color: #BBBBBB;
+}
+
+#sidebar .dirlist ul{
+   padding-left:40px;
+   list-style-image: url(./images/folder.gif);
+}
+
+#sidebar ul{
+   list-style: none;
+   margin:0;
+   padding: 0;
+}
+
+#sidebar ul li{
+   height: auto;
+   margin: 0;
+   padding: 7px;
+   font-size:14px;
+   border-bottom: 1px #CCCCCC dotted;
+}

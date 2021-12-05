@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165890491-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-165890491-1');</script>
+    <meta http-equiv="Content-Type" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>お問い合わせ | 第一高等学校・東京大学弁論部</title>
+    <meta name="description" content="弊部へのお問い合わせに関する情報を掲載しています。お問い合わせフォームもご活用ください。">
+    <meta property="og:title" content="お問い合わせ | 第一高等学校・東京大学弁論部">
+    <meta property="og:url" content="https://utbenron.com/contact/">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://utbenron.com/assets/image/logo/logo-small.png">
+    <meta property="og:description" content="弊部へのお問い合わせに関する情報を掲載しています。お問い合わせフォームもご活用ください。">
+    <meta property="og:site_name" content="第一高等学校・東京大学弁論部 公式サイト">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@Todai_Benronbu">
+    <meta name="theme-color" content="#248bd1">
+    <link rel="icon" href="../assets/image/logo/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/image/logo/apple-touch-icon.png">
+    <link rel="stylesheet" href="../assets/css/subpage.css">
+    <noscript>
+        <link rel="stylesheet" type="text/css" href="../assets/css/noscript.css">
+    </noscript>
+</head>
+<body ontouchstart>
+    <header id="header">
+        <div class="header__logo">
+            <svg id="header__circle" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle class="circle" cx="-15" cy="50" r="100"></circle>
+            </svg>
+            <div class="header__title-short first-view-letters">ITB</div>
+            <h1 class="header__title first-view-letters">第一高等学校<br>・東京大学弁論部</h1>
+            <a href="../"></a>
+        </div>
+        <div id="header__menu-trigger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+    <menu id="header-menu">
+        <ul class="header-menu__list">
+            <li class="header-menu__list-item">
+                <span class="first-view-letters">HOME</span>
+                <a href="../"></a>
+            </li>
+            <li class="header-menu__list-item">
+                <span class="first-view-letters">活動概要</span>
+                <a href="../about"></a>
+            </li>
+            <li class="header-menu__list-item">
+                <span class="first-view-letters">お知らせ</span>
+                <a href="../news"></a>
+            </li>
+            <li class="header-menu__list-item">
+                <span class="first-view-letters">企画</span>
+                <a href="../event"></a>
+            </li>
+            <li class="header-menu__list-item">
+                <span class="first-view-letters">入部希望の方へ</span>
+                <a href="../join"></a>
+            </li>
+            <li class="header-menu__list-item is-current"><span class="first-view-letters">お問い合わせ</span></li>
+        </ul>
+    </menu>
+    <div id="page-cover"></div>
+    
+    <div id="container">    <main id="main" class="no-top">
+        <h3 class="heading-1">お問い合わせ先</h3>
+        <div class="text-block">
+            <p class="text-normal">東大弁論部にご用件のある方は、氏名・ご用件の内容などを明記の上、以下の連絡先にお問い合わせください。</p>
+            <ul class="list-in-block">
+                <li>mail: ichiko.todai.benronbu@gmail.com</li>
+                <li><a class="text-link" href="https://twitter.com/Todai_Benronbu" data-external>公式Twitter(@Todai_Benronbu)</a></li>
+                <li><a class="text-link" href="http://lin.ee/exxABgv" data-external>2021年度公式LINEアカウント</a></li>
+            </ul>
+        </div>
+
+        <h3 class="heading-1">お問い合わせフォーム</h3>
+        <div class="text-block">
+            <div id="contact-form-wrapper">
+                <form id="contact-form-input" class="contact-form">
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">お名前</label>
+                        <input id="contact-form-input__name" type="text" class="input" name="name" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">メールアドレス</label>
+                        <input id="contact-form-input__mail" id="mail" type="email" class="input" placeholder="xxx@yyy.com" name="mail" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                        <div class="error-message error-invalid-mail">メールアドレスの形式が正しくありません</div>
+                    </div>
+                    <div class="contact-form-group">
+                        <label class="contact-form-group__label">メールアドレス(確認)</label>
+                        <input id="contact-form-input__mail-confirm" type="email" class="input" name="mail-confirm" required>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                        <div class="error-message error-invalid-confirmation">メールアドレスが一致していません</div>
+                    </div>
+                    
+                    <!-- <div class="contact-form-group">
+                        <label class="contact-form-group__label">ご用件</label>
+                        <div class="contact-form-group__radio-group">
+                            <input type="radio" id="radio01" name="question"><label class="contact-form-group__radio-label" for="radio01">質問</label>
+                            <input type="radio" id="radio02" name="question"><label class="contact-form-group__radio-label" for="radio02">入部希望</label>
+                            <input type="radio" id="radio03" name="question"><label class="contact-form-group__radio-label" for="radio03">見学希望</label>
+                            <input type="radio" id="radio04" class="others" name="question"><label class="contact-form-group__radio-label" for="radio04">その他</label>
+                            <input type="text" name="others" placeholder="ご用件をお書きください" class="contact-form-group__input-others">
+                        </div>
+                    </div> -->
+                   
+                    <div class="contact-form-group" class="contact-form">
+                        <label class="contact-form-group__label">お問い合わせ内容</label>
+                        <textarea id="contact-form-input__content" name="content" class="input" required></textarea>
+                        <div class="error-message error-empty">入力がなされていません</div>
+                    </div>
+
+                    <div class="contact-form__button" id="contact-form__confirm">確認画面へ</div>
+                </form>
+
+                <div id="contact-form-confirmation" class="contact-form">
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">お名前：</span>
+                        <p id="contact-form-confirmation__name" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">メールアドレス：</span>
+                        <p id="contact-form-confirmation__mail" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form-group">
+                        <span class="contact-form-group__label">お問い合わせ内容</span>
+                        <p id="contact-form-confirmation__content" class="contact-form-group__text"></p>
+                    </div>
+                    <div class="contact-form__button" id="contact-form__back" class="enabled">編集画面に戻る</div>
+                    <div class="contact-form__button" id="contact-form__submit" class="enabled">送信する</div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <small>© 2021 第一高等学校・東京大学弁論部</small>
+    </footer>
+</div>
+
+<script>
+    window.WebFontConfig = {
+        google: {
+            families: ['Noto+Sans+JP:400,700', 'M+PLUS+1p','Michroma']
+        },
+        active: function() {sessionStorage.fonts = true;}
+    };
+
+    (function() {
+        let wf = document.createElement('script');
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        let s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+
+        <script src="../assets/js/common.js" type="text/javascript" charset="uft-8"></script>
+        <script src="../assets/js/form.js" type="text/javascript" charset="uft-8"></script>
+</body>
+</html>

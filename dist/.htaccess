@@ -1,0 +1,52 @@
+Order Deny,Allow
+
+AddDefaultCharset UTF-8
+AddType "text/html; charset=utf-8" .html
+AddType "text/javascript; charset=utf-8" .js
+
+<Files .htaccess>
+    Deny from all
+</Files>
+
+DirectoryIndex index.html
+Options -Indexes
+
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^.*/index\.html
+RewriteRule ^(.*)/index\.html$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^www\.utbenron\.com [NC]
+RewriteRule ^(.*)$ https://utbenron.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+
+ErrorDocument 404 /error/404.html
+
+<Files ~ "\.(html|php|jpe?g|gif|png|css|js|pdf)$">
+  Header add Pragma "no-cache"
+  Header set Cache-Control no-cache
+</Files>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{SCRIPT_FILENAME}.webp -f
+  RewriteRule .(jpe?g|png|gif)$ %{SCRIPT_FILENAME}.webp [T=image/webp]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_setenvif.c>
+  SetEnvIf Request_URI "\.(jpe?g|png|gif)$" _image_request
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header append Vary Accept env=_image_request
+</IfModule>

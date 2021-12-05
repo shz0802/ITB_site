@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "ITB ID and password" 
+AuthUserFile /home/users/1/main.jp-utbenron/web/bukai/.htpasswd
+require valid-user
+<Files ~ "^.(htpasswd|htaccess)$">
+deny from all
+</Files> 

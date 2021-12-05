@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "編集用のIDとパスワードを入力してください。" 
+AuthUserFile /home/users/1/main.jp-utbenron/web/admin/.htpasswd
+require valid-user
+<Files ~ "^.(htpasswd|htaccess)$">
+deny from all
+</Files> 

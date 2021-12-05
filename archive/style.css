@@ -1,0 +1,425 @@
+body {
+   margin: 0;
+   font-size: 13px;
+   background-color: #efe4b0;
+}
+
+a {
+   color: #3366CC;
+   text-decoration: none;
+} 
+
+a:visited {
+   color: #3366CC;
+} 
+
+a:hover {
+   text-decoration: underline;
+}
+
+label.submenu{
+   display: none;
+}
+
+input[type="checkbox"].switch{
+   display: none;
+}
+
+/* ２カラムレイアウトの作成 */
+#top {
+   box-sizing:border-box; /* width・heightにpaddingを含める */
+   margin-left: auto;
+   margin-right: auto;
+   padding: 20px;
+   width: 1000px; /* box-sizing:border-boxを指定しない場合960px */
+   height: 110px; /* box-sizing:border-boxを指定しない場合90px */
+   background-color: #FFFFFF;
+}
+
+#header {
+   margin-left: auto;
+   margin-right: auto;
+   width: 1030px;
+   height: 35px;
+   background-color: #400000;
+}
+
+/* Wrapper */
+#main{
+   margin-left: auto;
+   margin-right: auto;
+   width: 1000px;
+   background-color: #FFFFFF;
+}
+
+#sidebar {
+   box-sizing:border-box;
+   padding-left: 10px;
+   padding-right: 10px;
+   width: 270px;
+   float: left;
+   font-size: 13px;
+}
+
+#content {
+   padding: 10px;
+   margin-left: 270px;
+}
+
+#footer {
+   padding: 5px;
+   clear: both;
+   text-align: center;
+}
+
+/* header */
+/* メインメニュー総論 */
+#header ul{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   text-align: center;
+   z-index: 2;
+}
+
+/* メインメニュー各論 */
+#header ul li{
+   margin: 0;
+   padding: 0px;
+   float: left;
+   position: relative;
+}
+
+#header ul li a{
+   box-sizing: border-box;
+   padding: 5px;
+   width: 120px;
+   line-height: 25px;
+   display: block;
+   float: left;
+   color: #DDDDDD;
+   text-decoration: none;
+}
+
+/* オンマウス時の色変更（li a:hoverにするとサブメニュー上にカーソルが移動した際に色が戻る） */
+#header ul li:hover{
+   color: #EEEEEE;
+   background-color: #000000;
+}
+
+/* サブメニュー総論 */
+#header ul li ul{
+   box-sizing: border-box;
+   position: absolute; /* 親ボックス（メインメニュー各論）の左上を基準に */
+   top: 100%; /* 親ボックスの左上から下に100%（35px） */
+   left: 0; /* 親ボックスの左上から横に0（0px） */
+   width: 100%;
+}
+
+/* サブメニュー各論（通常時） */
+#header ul li ul li{
+   box-sizing: border-box;
+   overflow: hidden; /* 35pxからはみ出たもの（サブメニュー）を表示しない */
+   width: 100%;
+   height: 0;
+   transition: .2s;
+}
+
+/* サブメニュー各論（オンマウス時） */
+#header ul li:hover ul li{
+    overflow: visible;
+    box-sizing: border-box;
+    height: 35px;
+}
+
+#header ul li ul li a{
+   box-sizing: border-box;
+   padding: 5px;
+   line-height: 25px;
+   color: #EEEEEE;
+   background-color: rgba(0,0,0,0.8);
+   text-decoration: none;
+}
+
+#header ul li ul li a:hover{
+   color: #EEEEEE;
+   background-color: #000000;
+}
+
+/* sidebar */
+
+#sidebar h2{
+   font-size: 13px;
+   padding: 5px;
+   border-bottom: 1px #000000 solid;
+}
+
+#sidebar ul{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+#sidebar ul li{
+   margin: 0;
+   padding: 7px;
+   font-size:14px;
+   border-bottom: 1px #CCCCCC solid;
+}
+
+/* content */
+
+#content h2{
+   padding-top: 8px;
+   padding-left: 6px;
+   height: 24px;
+   color: #000000;
+   font-size: 17px;
+   border-bottom: 1px #000000 solid;
+   border-left: 4px #000000 solid;
+}
+
+#content h3{
+   padding: 5px;
+   color: #000000;
+   font-size: 15px;
+   border-bottom: 1px #CCCCFF solid;
+   border-left: 4px #CCCCFF solid;
+}
+
+/* ポスター掲示板 */
+#content #poster {
+   height: 200px;
+   position: relative;
+   z-index: 1;
+}
+
+/* 新着情報など */
+#content .list{
+   width:100%;
+}
+
+#content .list ul{
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+#content .list ul li{
+   margin: 0;
+   padding-top: 7px;
+   padding-bottom: 7px;
+   font-size:14px;
+   border-bottom: 1px #CCCCCC solid;
+}
+
+/* スマートフォン用表示 */
+
+@media screen and (max-width: 480px){
+
+html, body{
+   height: 100%;
+}
+
+body {
+   font-size:14px;
+   background-color: #EEEEEE;
+}
+
+/* レイアウト */
+#top{
+   margin: 0;
+   padding: 0;
+   height: 70px;
+   width:100%;
+   background-image: url("./images/top-s_2.png");
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: 5px 0px;
+}
+
+#header {
+   box-sizing: border-box;
+   margin 0;
+   padding: 0;
+   height: 120px;
+   width: 100%;
+   font-size: 14px;
+   background-color: #007fc4;
+}
+
+#main{
+   margin: 0;
+   width: 100%;
+   clear:both;
+}
+
+#sidebar{
+   width: initial;
+   height: initial;
+   float: initial;
+}
+
+#content{
+   box-sizing: border-box;
+   margin: 0;
+   padding: 10px;
+   width: 100%;
+   clear:both;
+}
+
+/* top */
+#top img{
+   display: none;
+}
+
+label.submenu {
+   margin: 0;
+   padding: 0;
+   height: 50px;
+   width: 50px;
+   position: fixed;
+   top: 10px;
+   right: 10px;
+   z-index: 4;
+   display: block;
+   border: 1px solid #CCCCCC;
+   background: #FFFFFF;
+   background-image: url("./images/submenu.png");
+   background-repeat: no-repeat;
+}
+
+input[type="checkbox"].switch:checked ~ label{
+   background-image: url("./images/submenu_close.png");
+}
+
+input[type="checkbox"].switch{
+   display: none;
+}
+
+input[type="checkbox"].switch ~ #sidebar{
+   height: 0;
+   overflow: hidden;
+   transition: .2s;
+}
+
+input[type="checkbox"].switch:checked ~ #sidebar{
+   height: 100%;
+   width: 100%;
+   position: fixed;
+   overflow: auto;
+   top: 0px;
+   right: 0px;
+   z-index: 3;
+   background-color: rgba(255,255,255,0.85);
+}
+
+/* header */
+#header ul{
+   list-style: none;
+   text-align: center;
+   margin: 0;
+   padding: 0;
+   z-index:2;
+}
+
+#header ul li{
+   box-sizing: border-box;
+   width: 50%;
+   margin: 0;
+   padding: 0px;
+   float: left;
+   position: relative;
+}
+
+#header ul li a{
+   box-sizing: border-box;
+   margin: auto;
+   padding: 0;
+   width: 100%;
+   float: left;
+   display: block;
+   color: #DDDDDD;
+   line-height: 40px;
+   text-decoration: none;
+}
+
+#header ul li:hover{
+   color: #EEEEEE;
+   background-color: #000000;
+}
+
+#header ul li ul{
+   position: absolute;
+   top: 100%;
+   left: initial;
+   width: 100%;
+}
+
+#header ul li ul li{
+   overflow: hidden;
+   width: 100%;
+   height: 0;
+   transition: .2s;
+}
+
+#header ul li ul li a{
+   padding: 0;
+   border-right: none;
+   border-bottom: 1px #CCCCCC solid;
+   color: #EEEEEE;
+   background-color: rgba(0,0,0,0.8);
+   line-height: 40px;
+   text-decoration: none;
+}
+
+#header ul li ul li a:hover{
+   color: #EEEEEE;
+   background-color: #444444;
+}
+
+#header ul li:hover ul li{
+   overflow: visible;
+   height: 40px;
+}
+
+/* content */
+#content h2{
+   padding: initial;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border: initial;
+   border-bottom: 1px #000000 solid;
+   color: #000000;
+   font-size: 17px;
+}
+
+#content h3{
+   padding: initial;
+   padding-top: 5px;
+   padding-bottom: 5px;
+   border: initial;
+   border-bottom: 1px #007fc4 solid;
+   color: #007fc4;
+   font-size: 15px;
+}
+
+#content #poster-wrapper{
+   height: 200px;
+   width:100%;
+   z-index: 1;
+   overflow-x:auto;
+   overflow-y:hidden;
+}
+
+#content #poster{
+   width:730px;
+   -webkit-overflow-scrolling:touch;
+}
+
+#content .list ul li{
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+
+}
