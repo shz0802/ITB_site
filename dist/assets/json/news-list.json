@@ -3,6 +3,21 @@
         {
             "year": 2021,
             "month": 12,
+            "day": 30,
+            "name": "election",
+            "title": "132期部長に板屋部員を選出しました",
+            "label": "management",
+            "img": false,
+            "customizedHtml": false,
+            "content":{
+                "text":[
+                    "12月29日に132期部長選挙が行われました。2名が出馬し、投票の結果、板屋部員(1年)が132期部長として選出されました。"
+                ]
+            }
+        },
+        {
+            "year": 2021,
+            "month": 12,
             "day": 21,
             "name": "souchohai",
             "title": "第40回東京大学総長杯争奪全国学生弁論大会を開催しました",
