@@ -1,6 +1,6 @@
 ﻿import setting from './components/setting';
-import Swiper from 'swiper';
-import 'style-loader!css-loader!swiper/css/swiper.css';
+import Swiper from 'swiper/bundle';
+import 'style-loader!css-loader!swiper/css/bundle';
 import setDrawer from './components/drawer';
 import lozad from 'lozad';
 
@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         },
         speed: 1500,
         autoplay: {
-            delay: 2500
+            delay: 2500,
+            disableOnInteraction: false
         },
         preloadImages: false,
         lazy: {

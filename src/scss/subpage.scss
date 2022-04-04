@@ -29,7 +29,7 @@
                 font-weight: normal;
                 $title-text-height: 15vw;
                 position: relative;
-                margin-top: (60vw - $title-text-height)/2;
+                margin-top: calc((60vw - $title-text-height) / 2);
                 width: 70%;
                 margin-left: 15%;
                 height: $title-text-height;
@@ -91,7 +91,7 @@
                 font-weight: normal;
                 $title-text-height: 15vw;
                 position: relative;
-                margin-top: (60vw - $title-text-height)/2;
+                margin-top: calc((60vw - $title-text-height) / 2);
                 width: 70%;
                 margin-left: 15%;
                 height: $title-text-height;
@@ -393,8 +393,8 @@ ul.list-in-block{
         &:before{
             content: "";
             position: absolute;
-            top: $list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2;
-            left: $list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2;
+            top: calc($list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2);
+            left: calc($list-font-size * $list-line-height * (1 - $list-style-circle-size) / 2);
             width: $list-font-size * $list-line-height * $list-style-circle-size;
             height: $list-font-size * $list-line-height * $list-style-circle-size;
             background-color: rgba($base-black, 0.8);

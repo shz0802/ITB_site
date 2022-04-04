@@ -45,7 +45,7 @@
                 color: $base-color;
                 margin: 0;
                 font-size: $base-size*0.28;
-                top: $base-size*(1 - 0.28)/2;
+                top: calc($base-size*(1 - 0.28) / 2);
                 left: $base-size*0.1;
             }
             .header__title{
@@ -74,7 +74,7 @@
         will-change: transform;
         $menu-trigger-height: 15vw;
         position: absolute;
-        top: ($sp-nav-height - $menu-trigger-height)/2;
+        top: calc(($sp-nav-height - $menu-trigger-height) / 2);
         right: 3vw;
         width: 15vw;
         height: $menu-trigger-height;

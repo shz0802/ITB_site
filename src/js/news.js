@@ -1,6 +1,6 @@
 ﻿import setting from "./components/setting";
 import Swiper from 'swiper';
-import 'style-loader!css-loader!swiper/css/swiper.css';
+import 'style-loader!css-loader!swiper/css';
 
 const entriesPerPage = 9;
 
